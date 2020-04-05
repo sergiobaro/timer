@@ -2,10 +2,12 @@ import Cocoa
 
 class StatusItemController {
   
+  private let finishTime: TimeInterval = 5
+  
   private var statusItem: NSStatusItem?
   private var timer: Timer?
   private var startedAt: Date?
-  private let finishTime: TimeInterval = 5
+  private var timerFinishedPopover: NSPopover?
   
   init() {
     statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -43,6 +45,8 @@ private extension StatusItemController {
   }
   
   @objc func startTimer() {
+    self.timerFinishedPopover?.close()
+    
     let formatter = DateComponentsFormatter()
     formatter.allowedUnits = [.minute, .second]
     formatter.unitsStyle = .positional
@@ -87,5 +91,7 @@ private extension StatusItemController {
     popover.contentViewController = vc
     
     popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+    
+    self.timerFinishedPopover = popover
   }
 }
