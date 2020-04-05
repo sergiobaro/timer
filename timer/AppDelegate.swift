@@ -1,26 +1,12 @@
-//
-//  AppDelegate.swift
-//  timer
-//
-//  Created by Sergio Baro on 05/04/2020.
-//  Copyright © 2020 Sergio Baro. All rights reserved.
-//
-
 import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-
+  var statusItemController: StatusItemController!
+  var timer: Timer?
+  
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    // Insert code here to initialize your application
+    statusItemController = StatusItemController()
   }
-
-  func applicationWillTerminate(_ aNotification: Notification) {
-    // Insert code here to tear down your application
-  }
-
-
 }
-

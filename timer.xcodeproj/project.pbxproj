@@ -8,19 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A492439A45F00D221E3 /* AppDelegate.swift */; };
-		D9635A4C2439A45F00D221E3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A4B2439A45F00D221E3 /* ViewController.swift */; };
-		D9635A4E2439A46000D221E3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9635A4D2439A46000D221E3 /* Assets.xcassets */; };
-		D9635A512439A46000D221E3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9635A4F2439A46000D221E3 /* Main.storyboard */; };
+		D9635A762439AF9600D221E3 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9635A752439AF9600D221E3 /* Application.xib */; };
+		D9635A7C2439C4B700D221E3 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A7B2439C4B700D221E3 /* StatusItemController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D9635A462439A45F00D221E3 /* timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9635A492439A45F00D221E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9635A4B2439A45F00D221E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D9635A4D2439A46000D221E3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D9635A502439A46000D221E3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9635A522439A46000D221E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9635A532439A46000D221E3 /* timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = timer.entitlements; sourceTree = "<group>"; };
+		D9635A752439AF9600D221E3 /* Application.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
+		D9635A7B2439C4B700D221E3 /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,13 +52,20 @@
 			isa = PBXGroup;
 			children = (
 				D9635A492439A45F00D221E3 /* AppDelegate.swift */,
-				D9635A4B2439A45F00D221E3 /* ViewController.swift */,
-				D9635A4D2439A46000D221E3 /* Assets.xcassets */,
-				D9635A4F2439A46000D221E3 /* Main.storyboard */,
+				D9635A752439AF9600D221E3 /* Application.xib */,
 				D9635A522439A46000D221E3 /* Info.plist */,
 				D9635A532439A46000D221E3 /* timer.entitlements */,
+				D9635A7A2439C4A300D221E3 /* StatusItem */,
 			);
 			path = timer;
+			sourceTree = "<group>";
+		};
+		D9635A7A2439C4A300D221E3 /* StatusItem */ = {
+			isa = PBXGroup;
+			children = (
+				D9635A7B2439C4B700D221E3 /* StatusItemController.swift */,
+			);
+			path = StatusItem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -121,8 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9635A4E2439A46000D221E3 /* Assets.xcassets in Resources */,
-				D9635A512439A46000D221E3 /* Main.storyboard in Resources */,
+				D9635A762439AF9600D221E3 /* Application.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,23 +137,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9635A4C2439A45F00D221E3 /* ViewController.swift in Sources */,
+				D9635A7C2439C4B700D221E3 /* StatusItemController.swift in Sources */,
 				D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		D9635A4F2439A46000D221E3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D9635A502439A46000D221E3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D9635A542439A46000D221E3 /* Debug */ = {
@@ -268,7 +261,6 @@
 		D9635A572439A46000D221E3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = timer/timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -288,7 +280,6 @@
 		D9635A582439A46000D221E3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = timer/timer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
