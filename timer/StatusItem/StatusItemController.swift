@@ -5,6 +5,7 @@ class StatusItemController {
   private var statusItem: NSStatusItem?
   private var timer: Timer?
   private var startedAt: Date?
+  private let finishTime: TimeInterval = 5
   
   init() {
     statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -46,19 +47,25 @@ private extension StatusItemController {
     formatter.allowedUnits = [.minute, .second]
     formatter.unitsStyle = .positional
     formatter.zeroFormattingBehavior = .pad
-    
+
     startedAt = Date()
-    
+
     timer = Timer(timeInterval: 1.0, repeats: true) { [weak self] _ in
-      guard let from = self?.startedAt else { return }
-      
+      guard let self = self else { return }
+      guard let from = self.startedAt else { return }
+
       let timeInterval = Date().timeIntervalSince(from)
-      
-      self?.statusItem?.button?.title = formatter.string(from: timeInterval) ?? ""
+
+      self.statusItem?.button?.title = formatter.string(from: timeInterval) ?? ""
+
+      if timeInterval >= self.finishTime {
+        self.showFinished()
+        self.stopTimer()
+      }
     }
-    
+
     RunLoop.main.add(timer!, forMode: .common)
-    
+
     updateTitle()
     updateMenu()
   }
@@ -70,5 +77,15 @@ private extension StatusItemController {
     
     updateTitle()
     updateMenu()
+  }
+  
+  func showFinished() {
+    guard let button = statusItem?.button else { return }
+    
+    let vc = TimerFinishedViewController()
+    let popover = NSPopover()
+    popover.contentViewController = vc
+    
+    popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
   }
 }

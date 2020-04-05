@@ -10,6 +10,8 @@
 		D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A492439A45F00D221E3 /* AppDelegate.swift */; };
 		D9635A762439AF9600D221E3 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9635A752439AF9600D221E3 /* Application.xib */; };
 		D9635A7C2439C4B700D221E3 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A7B2439C4B700D221E3 /* StatusItemController.swift */; };
+		D9D15EF92439CD02000598A4 /* TimerFinishedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D15EF72439CD02000598A4 /* TimerFinishedViewController.xib */; };
+		D9D15EFA2439CD02000598A4 /* TimerFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D15EF82439CD02000598A4 /* TimerFinishedViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		D9635A532439A46000D221E3 /* timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = timer.entitlements; sourceTree = "<group>"; };
 		D9635A752439AF9600D221E3 /* Application.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
 		D9635A7B2439C4B700D221E3 /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
+		D9D15EF72439CD02000598A4 /* TimerFinishedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerFinishedViewController.xib; sourceTree = "<group>"; };
+		D9D15EF82439CD02000598A4 /* TimerFinishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFinishedViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 				D9635A752439AF9600D221E3 /* Application.xib */,
 				D9635A522439A46000D221E3 /* Info.plist */,
 				D9635A532439A46000D221E3 /* timer.entitlements */,
+				D9D15EF62439CD02000598A4 /* TimerFinished */,
 				D9635A7A2439C4A300D221E3 /* StatusItem */,
 			);
 			path = timer;
@@ -66,6 +71,15 @@
 				D9635A7B2439C4B700D221E3 /* StatusItemController.swift */,
 			);
 			path = StatusItem;
+			sourceTree = "<group>";
+		};
+		D9D15EF62439CD02000598A4 /* TimerFinished */ = {
+			isa = PBXGroup;
+			children = (
+				D9D15EF72439CD02000598A4 /* TimerFinishedViewController.xib */,
+				D9D15EF82439CD02000598A4 /* TimerFinishedViewController.swift */,
+			);
+			path = TimerFinished;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,6 +140,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9D15EF92439CD02000598A4 /* TimerFinishedViewController.xib in Resources */,
 				D9635A762439AF9600D221E3 /* Application.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,6 +154,7 @@
 			files = (
 				D9635A7C2439C4B700D221E3 /* StatusItemController.swift in Sources */,
 				D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */,
+				D9D15EFA2439CD02000598A4 /* TimerFinishedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
