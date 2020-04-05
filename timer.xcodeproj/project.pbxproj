@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D91176E9243A3CA400980AB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176E8243A3CA400980AB6 /* Constants.swift */; };
+		D91176ED243A3DBF00980AB6 /* MenuItemsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176EC243A3DBF00980AB6 /* MenuItemsBuilder.swift */; };
+		D91176F0243A3DD200980AB6 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176EF243A3DD200980AB6 /* MenuItem.swift */; };
+		D91176F2243A3FB400980AB6 /* StatusItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176F1243A3FB400980AB6 /* StatusItemRouter.swift */; };
+		D91176F4243A409800980AB6 /* StatusItemSectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176F3243A409800980AB6 /* StatusItemSectionBuilder.swift */; };
 		D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A492439A45F00D221E3 /* AppDelegate.swift */; };
 		D9635A762439AF9600D221E3 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9635A752439AF9600D221E3 /* Application.xib */; };
 		D9635A7C2439C4B700D221E3 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A7B2439C4B700D221E3 /* StatusItemController.swift */; };
@@ -23,6 +27,10 @@
 
 /* Begin PBXFileReference section */
 		D91176E8243A3CA400980AB6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D91176EC243A3DBF00980AB6 /* MenuItemsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsBuilder.swift; sourceTree = "<group>"; };
+		D91176EF243A3DD200980AB6 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		D91176F1243A3FB400980AB6 /* StatusItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemRouter.swift; sourceTree = "<group>"; };
+		D91176F3243A409800980AB6 /* StatusItemSectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemSectionBuilder.swift; sourceTree = "<group>"; };
 		D9635A462439A45F00D221E3 /* timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9635A492439A45F00D221E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9635A522439A46000D221E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,6 +85,15 @@
 			path = Sections;
 			sourceTree = "<group>";
 		};
+		D91176EE243A3DC300980AB6 /* MenuItem */ = {
+			isa = PBXGroup;
+			children = (
+				D91176EC243A3DBF00980AB6 /* MenuItemsBuilder.swift */,
+				D91176EF243A3DD200980AB6 /* MenuItem.swift */,
+			);
+			path = MenuItem;
+			sourceTree = "<group>";
+		};
 		D9635A3D2439A45E00D221E3 = {
 			isa = PBXGroup;
 			children = (
@@ -109,8 +126,11 @@
 		D9635A7A2439C4A300D221E3 /* StatusItem */ = {
 			isa = PBXGroup;
 			children = (
+				D91176EE243A3DC300980AB6 /* MenuItem */,
 				D9F0B3592439E4F500E1D3CB /* StatusItemView.swift */,
+				D91176F1243A3FB400980AB6 /* StatusItemRouter.swift */,
 				D9635A7B2439C4B700D221E3 /* StatusItemController.swift */,
+				D91176F3243A409800980AB6 /* StatusItemSectionBuilder.swift */,
 			);
 			path = StatusItem;
 			sourceTree = "<group>";
@@ -118,8 +138,8 @@
 		D9D15EF62439CD02000598A4 /* TimerFinished */ = {
 			isa = PBXGroup;
 			children = (
-				D9D15EF72439CD02000598A4 /* TimerFinishedViewController.xib */,
 				D9D15EF82439CD02000598A4 /* TimerFinishedViewController.swift */,
+				D9D15EF72439CD02000598A4 /* TimerFinishedViewController.xib */,
 			);
 			path = TimerFinished;
 			sourceTree = "<group>";
@@ -210,9 +230,13 @@
 				D9635A7C2439C4B700D221E3 /* StatusItemController.swift in Sources */,
 				D9F0B35C2439E7A900E1D3CB /* TickTimer.swift in Sources */,
 				D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */,
+				D91176F4243A409800980AB6 /* StatusItemSectionBuilder.swift in Sources */,
 				D9F0B3632439ECF300E1D3CB /* TimerFormatter.swift in Sources */,
+				D91176ED243A3DBF00980AB6 /* MenuItemsBuilder.swift in Sources */,
 				D9D15EFA2439CD02000598A4 /* TimerFinishedViewController.swift in Sources */,
 				D9F0B3582439E3E100E1D3CB /* Sound.swift in Sources */,
+				D91176F0243A3DD200980AB6 /* MenuItem.swift in Sources */,
+				D91176F2243A3FB400980AB6 /* StatusItemRouter.swift in Sources */,
 				D9F0B3612439EBD500E1D3CB /* Localize.swift in Sources */,
 				D91176E9243A3CA400980AB6 /* Constants.swift in Sources */,
 			);

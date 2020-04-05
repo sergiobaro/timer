@@ -1,24 +1,16 @@
 import Cocoa
 
-struct MenuItem {
-  let title: String
-  let block: () -> Void
-}
-
 protocol StatusItemView: class {
   
   var title: String? { get set }
   var menuItems: [MenuItem] { get set }
-  
-  func showFinished()
-  func hideFinished()
 }
 
 class StatusItemViewProxy: StatusItemView {
   
   var title: String? {
-    get { statusItem?.button?.title }
-    set { statusItem?.button?.title = newValue ?? "" }
+    get { statusItem.button?.title }
+    set { statusItem.button?.title = newValue ?? "" }
   }
   
   var menuItems: [MenuItem] = [] {
@@ -27,27 +19,10 @@ class StatusItemViewProxy: StatusItemView {
     }
   }
   
-  private var statusItem: NSStatusItem?
-  private var timerFinishedPopover: NSPopover?
+  private let statusItem: NSStatusItem
   
-  init() {
-    statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-  }
-  
-  func showFinished() {
-    guard let button = statusItem?.button else { return }
-    
-    let vc = TimerFinishedViewController()
-    let popover = NSPopover()
-    popover.contentViewController = vc
-    popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-    
-    self.timerFinishedPopover = popover
-  }
-  
-  func hideFinished() {
-    self.timerFinishedPopover?.close()
-    self.timerFinishedPopover = nil
+  init(statusItem: NSStatusItem) {
+    self.statusItem = statusItem
   }
 }
 
@@ -63,12 +38,12 @@ private extension StatusItemViewProxy {
       return item
     }
     
-    statusItem?.menu = menu
+    statusItem.menu = menu
   }
   
   @objc private func tapMenuItem(_ sender: NSMenuItem) {
     let index = sender.tag
     let menuItem = menuItems[index]
-    menuItem.block()
+    menuItem.callback()
   }
 }

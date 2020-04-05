@@ -2,15 +2,15 @@ import Foundation
 
 class StatusItemController {
   
-  private let finishTime: TimeInterval = 25 * 60
   private let formatter = TimerFormatter()
-  
   private let view: StatusItemView
+  private let router: StatusItemRouter
   private let timer: TickTimer
   private let sounds: SoundsService
   
-  init(view: StatusItemView, timer: TickTimer, sounds: SoundsService) {
+  init(view: StatusItemView, router: StatusItemRouter, timer: TickTimer, sounds: SoundsService) {
     self.view = view
+    self.router = router
     self.timer = timer
     self.sounds = sounds
     
@@ -22,29 +22,27 @@ private extension StatusItemController {
   
   func setInitialState() {
     view.title = localize("title")
-    let defaulTime = formatter.format(Constants.defaultTime)!
-    updateMenu(menuItem: MenuItem(title: localize("start") + " (\(defaulTime))", block: { [weak self] in
-      self?.startTimer()
-    }))
-  }
-  
-  func updateMenu(menuItem: MenuItem) {
-    view.menuItems = [menuItem]
-  }
-  
-  @objc func startTimer() {
-    view.hideFinished()
     
-    updateMenu(menuItem: MenuItem(title: localize("stop"), block: { [weak self] in
-      self?.stopTimer()
-    }))
+    view.menuItems = MenuItemsBuilder()
+      .add(menuItems: buildDefaultMenuItems())
+      .build()
+  }
+  
+  @objc func startTimer(finishTimeInterval: TimeInterval) {
+    router.hideFinished()
+    
+    view.menuItems = MenuItemsBuilder()
+      .add(title: localize("stop"), callback: { [weak self] in
+        self?.stopTimer()
+      })
+      .build()
     
     timer.start { [weak self] timeInterval in
       guard let self = self else { return }
     
       self.view.title = self.formatter.format(timeInterval)
 
-      if timeInterval >= self.finishTime {
+      if timeInterval >= finishTimeInterval {
         self.finish()
       }
     }
@@ -58,6 +56,16 @@ private extension StatusItemController {
   func finish() {
     stopTimer()
     sounds.playFinished()
-    view.showFinished()
+    router.showFinished()
+  }
+  
+  func buildDefaultMenuItems() -> [MenuItem] {
+    return Constants.defaultTimeIntervals.map({ timeInterval in
+      let timeString = formatter.format(timeInterval)!
+      let title = localize("start") + " \(timeString)"
+      return MenuItem(title: title) { [weak self] in
+        self?.startTimer(finishTimeInterval: timeInterval)
+      }
+    })
   }
 }
