@@ -7,6 +7,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var timer: Timer?
   
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    statusItemController = StatusItemController()
+    statusItemController = StatusItemController(
+      view: StatusItemViewProxy(),
+      timer: TickTimerDefault(),
+      sounds: SoundsServiceDefault()
+    )
   }
 }
