@@ -63,8 +63,7 @@ private extension StatusItemController {
       self.statusItem?.button?.title = formatter.string(from: timeInterval) ?? ""
 
       if timeInterval >= self.finishTime {
-        self.showFinished()
-        self.stopTimer()
+        self.finish()
       }
     }
 
@@ -81,6 +80,12 @@ private extension StatusItemController {
     
     updateTitle()
     updateMenu()
+  }
+  
+  func finish() {
+    Sound().play(sound: .glass)
+    showFinished()
+    stopTimer()
   }
   
   func showFinished() {
