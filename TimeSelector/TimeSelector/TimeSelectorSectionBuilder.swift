@@ -1,9 +1,17 @@
 import Cocoa
 
-class TimeSeletorSectionBuilder {
+public protocol TimeSelectorDelegate: class {
 
-  func build(delegate: TimeSelectorDelegate) -> NSWindowController? {
-    let storyboard = NSStoryboard(name: "TimeSelector", bundle: nil)
+  func timeSelectorDidSelectTime(_ timeInterval: TimeInterval)
+}
+
+public class TimeSeletorSectionBuilder {
+
+  public init() { }
+
+  public func build(delegate: TimeSelectorDelegate) -> NSWindowController? {
+    let bundle = Bundle(for: type(of: self))
+    let storyboard = NSStoryboard(name: "TimeSelector", bundle: bundle)
     guard let windowController = storyboard.instantiateInitialController() as? NSWindowController else {
       return nil
     }

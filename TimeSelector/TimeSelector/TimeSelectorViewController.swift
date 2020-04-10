@@ -1,9 +1,5 @@
 import Cocoa
-
-protocol TimeSelectorDelegate: class {
-
-  func timeSelectorDidSelectTime(_ timeInterval: TimeInterval)
-}
+import Common
 
 class TimeSelectorViewController: NSViewController {
 

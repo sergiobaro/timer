@@ -1,6 +1,13 @@
 import Foundation
+import TimeSelector
+import Common
 
-class StatusItemController {
+public protocol StatusItemController {
+
+  func start()
+}
+
+class StatusItemControllerDefault: StatusItemController {
 
   private let formatter = TimerFormatter()
 
@@ -19,12 +26,14 @@ class StatusItemController {
     self.router = router
     self.timer = timer
     self.sounds = sounds
+  }
 
+  func start() {
     setInitialState()
   }
 }
 
-private extension StatusItemController {
+private extension StatusItemControllerDefault {
 
   func setInitialState() {
     view.title = localize("statusbar.title")
@@ -64,14 +73,14 @@ private extension StatusItemController {
   }
 }
 
-extension StatusItemController: TimeSelectorDelegate {
+extension StatusItemControllerDefault: TimeSelectorDelegate {
 
   func timeSelectorDidSelectTime(_ timeInterval: TimeInterval) {
     startTimer(finishTimeInterval: timeInterval)
   }
 }
 
-extension StatusItemController: MenuDelegate {
+extension StatusItemControllerDefault: MenuDelegate {
 
   func menuDidStartTime(_ timeInterval: TimeInterval) {
     startTimer(finishTimeInterval: timeInterval)

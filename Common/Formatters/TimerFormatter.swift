@@ -1,6 +1,6 @@
 import Foundation
 
-class TimerFormatter {
+public class TimerFormatter {
 
   private let formatter: DateComponentsFormatter = {
     let formatter = DateComponentsFormatter()
@@ -11,7 +11,9 @@ class TimerFormatter {
     return formatter
   }()
 
-  func format(_ timeInterval: TimeInterval) -> String? {
+  public init() { }
+
+  public func format(_ timeInterval: TimeInterval) -> String? {
     formatter.string(from: timeInterval)
   }
 }

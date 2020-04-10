@@ -1,4 +1,5 @@
 import Cocoa
+import StatusItem
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -6,6 +7,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var statusItemController: StatusItemController!
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-    self.statusItemController = StatusItemSectionBuilder().build()
+    statusItemController = StatusItemSectionBuilder().build()
+    statusItemController.start()
   }
 }

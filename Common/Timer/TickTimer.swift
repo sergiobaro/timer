@@ -1,17 +1,19 @@
 import Foundation
 
-protocol TickTimer {
+public protocol TickTimer {
 
   func start(onTick: @escaping (TimeInterval) -> Void)
   func stop()
 }
 
-class TickTimerDefault: TickTimer {
+public class TickTimerDefault: TickTimer {
 
   private var startedAt: Date?
   private var timer: Timer?
 
-  func start(onTick: @escaping (TimeInterval) -> Void) {
+  public init() { }
+
+  public func start(onTick: @escaping (TimeInterval) -> Void) {
     stop()
 
     startedAt = Date()
@@ -30,7 +32,7 @@ class TickTimerDefault: TickTimer {
     self.timer = timer
   }
 
-  func stop() {
+  public func stop() {
     timer?.invalidate()
     timer = nil
     startedAt = nil

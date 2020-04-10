@@ -29,7 +29,7 @@
         <!--Time Selector View Controller-->
         <scene sceneID="BoM-wr-fiO">
             <objects>
-                <viewController id="RjE-46-kwE" customClass="TimeSelectorViewController" customModule="timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RjE-46-kwE" customClass="TimeSelectorViewController" customModule="TimeSelector" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="a7i-oN-gIg">
                         <rect key="frame" x="0.0" y="0.0" width="218" height="138"/>
                         <autoresizingMask key="autoresizingMask"/>

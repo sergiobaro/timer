@@ -1,6 +1,7 @@
 import Cocoa
+import Common
 
-class TimerFinishedViewController: NSViewController {
+class TimeFinishedViewController: NSViewController {
 
   @IBOutlet private weak var doneTextField: NSTextField!
   @IBOutlet private weak var okButton: NSButton!
@@ -10,6 +11,7 @@ class TimerFinishedViewController: NSViewController {
 
     doneTextField.stringValue = localize("timer.finished.message")
     okButton.title = localize("timer.finished.ok")
+    okButton.keyEquivalent = "\r"
   }
 
   @IBAction private func tapOkButton(_ sender: NSButton) {

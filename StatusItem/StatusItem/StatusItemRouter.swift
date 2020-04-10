@@ -1,4 +1,6 @@
 import Cocoa
+import TimeSelector
+import TimeFinished
 
 protocol StatusItemRouter {
 
@@ -12,7 +14,7 @@ protocol StatusItemRouter {
 
 class StatusItemRouterDefault: StatusItemRouter {
 
-  private var timerFinishedPopover: NSPopover?
+  private var timeFinishedPopover: NSPopover?
   private var timeSelectorWindowController: NSWindowController?
 
   private weak var statusItem: NSStatusItem?
@@ -24,17 +26,16 @@ class StatusItemRouterDefault: StatusItemRouter {
   func showFinished() {
     guard let button = statusItem?.button else { return }
 
-    let viewController = TimerFinishedViewController()
     let popover = NSPopover()
-    popover.contentViewController = viewController
+    popover.contentViewController = TimeFinishedSectionBuilder().build()
     popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
 
-    timerFinishedPopover = popover
+    timeFinishedPopover = popover
   }
 
   func closeFinished() {
-    timerFinishedPopover?.close()
-    timerFinishedPopover = nil
+    timeFinishedPopover?.close()
+    timeFinishedPopover = nil
   }
 
   func showTimeSelector(delegate: TimeSelectorDelegate) {

@@ -1,11 +1,14 @@
 import Cocoa
+import Common
 
-class StatusItemSectionBuilder {
+public class StatusItemSectionBuilder {
 
-  func build() -> StatusItemController {
+  public init() { }
+
+  public func build() -> StatusItemController {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
-    return StatusItemController(
+    return StatusItemControllerDefault(
       view: StatusItemViewProxy(statusItem: statusItem),
       router: StatusItemRouterDefault(statusItem: statusItem),
       timer: TickTimerDefault(),
