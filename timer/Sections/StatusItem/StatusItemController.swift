@@ -45,7 +45,7 @@ private extension StatusItemController {
   }
 
   @objc func startTimer(finishTimeInterval: TimeInterval) {
-    router.hideFinished()
+    router.closeOpenWindows()
 
     view.menuItems = MenuItemsBuilder()
       .add(ActionMenuItem(title: localize("statusbar.stop"), callback: { [weak self] in

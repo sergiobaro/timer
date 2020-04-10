@@ -3,8 +3,11 @@ import Cocoa
 protocol StatusItemRouter {
 
   func showFinished()
-  func hideFinished()
+  func closeFinished()
   func showTimeSelector(delegate: TimeSelectorDelegate)
+  func closeTimeSelector()
+
+  func closeOpenWindows()
 }
 
 class StatusItemRouterDefault: StatusItemRouter {
@@ -29,7 +32,7 @@ class StatusItemRouterDefault: StatusItemRouter {
     timerFinishedPopover = popover
   }
 
-  func hideFinished() {
+  func closeFinished() {
     timerFinishedPopover?.close()
     timerFinishedPopover = nil
   }
@@ -44,5 +47,15 @@ class StatusItemRouterDefault: StatusItemRouter {
     windowController?.window?.center()
 
     timeSelectorWindowController = windowController
+  }
+
+  func closeTimeSelector() {
+    timeSelectorWindowController?.close()
+    timeSelectorWindowController = nil
+  }
+
+  func closeOpenWindows() {
+    closeFinished()
+    closeTimeSelector()
   }
 }
