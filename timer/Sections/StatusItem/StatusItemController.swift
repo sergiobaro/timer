@@ -1,14 +1,14 @@
 import Foundation
 
 class StatusItemController {
-  
+
   private let formatter = TimerFormatter()
   private let view: StatusItemView
   private let router: StatusItemRouter
   private let timer: TickTimer
   private let sounds: SoundsService
   private let application: ApplicationService
-  
+
   init(
     view: StatusItemView,
     router: StatusItemRouter,
@@ -21,16 +21,16 @@ class StatusItemController {
     self.timer = timer
     self.sounds = sounds
     self.application = application
-    
+
     setInitialState()
   }
 }
 
 private extension StatusItemController {
-  
+
   func setInitialState() {
     view.title = localize("statusbar.title")
-    
+
     view.menuItems = MenuItemsBuilder()
       .add(menuItems: buildDefaultMenuItems())
       .add(ActionMenuItem(title: localize("statusbar.start") + "...", callback: { [weak self] in
@@ -43,10 +43,10 @@ private extension StatusItemController {
       }))
       .build()
   }
-  
+
   @objc func startTimer(finishTimeInterval: TimeInterval) {
     router.hideFinished()
-    
+
     view.menuItems = MenuItemsBuilder()
       .add(ActionMenuItem(title: localize("statusbar.stop"), callback: { [weak self] in
         self?.stopTimer()
@@ -56,10 +56,10 @@ private extension StatusItemController {
         self?.application.close()
       }))
       .build()
-    
+
     timer.start { [weak self] timeInterval in
       guard let self = self else { return }
-    
+
       self.view.title = self.formatter.format(timeInterval)
 
       if timeInterval >= finishTimeInterval {
@@ -67,18 +67,18 @@ private extension StatusItemController {
       }
     }
   }
-  
+
   @objc func stopTimer() {
     timer.stop()
     setInitialState()
   }
-  
+
   func finish() {
     stopTimer()
     sounds.playFinished()
     router.showFinished()
   }
-  
+
   func buildDefaultMenuItems() -> [MenuItem] {
     return Constants.defaultTimeIntervals.map({ timeInterval in
       let timeString = formatter.format(timeInterval)!
@@ -91,13 +91,13 @@ private extension StatusItemController {
 }
 
 extension StatusItemController: TimeSelectorDelegate {
-  
+
   func timeSelectorDidSelectMinutes(_ minutes: Int) {
     let timeInterval = TimeInterval(minutes * 60)
     self.startTimer(finishTimeInterval: timeInterval)
   }
-  
+
   func timeSelectorDidClose() {
-    
+
   }
 }
