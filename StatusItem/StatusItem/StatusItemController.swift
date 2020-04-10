@@ -36,7 +36,7 @@ class StatusItemControllerDefault: StatusItemController {
 private extension StatusItemControllerDefault {
 
   func setInitialState() {
-    view.title = localize("statusbar.title")
+    view.title = loc("statusbar.title", self)
 
     view.menu = MenuBuilder()
       .addStartItems()

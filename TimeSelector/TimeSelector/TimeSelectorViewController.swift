@@ -12,12 +12,12 @@ class TimeSelectorViewController: NSViewController {
   override func viewDidAppear() {
     super.viewDidAppear()
 
-    view.window?.title = localize("time.selector.title")
+    view.window?.title = loc("time.selector.title", self)
 
-    messageLabel.stringValue = localize("time.selector.message")
-    minutesTextField.placeholderString = localize("time.selector.placeholder")
+    messageLabel.stringValue = loc("time.selector.message", self)
+    minutesTextField.placeholderString = loc("time.selector.placeholder", self)
     minutesTextField.formatter = MinutesFormatter()
-    startButton.title = localize("time.selector.start.button")
+    startButton.title = loc("time.selector.start.button", self)
     startButton.keyEquivalent = "\r"
 
     minutesTextField.becomeFirstResponder()

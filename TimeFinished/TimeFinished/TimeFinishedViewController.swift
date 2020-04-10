@@ -9,8 +9,8 @@ class TimeFinishedViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    doneTextField.stringValue = localize("timer.finished.message")
-    okButton.title = localize("timer.finished.ok")
+    doneTextField.stringValue = loc("time.finished.message", self)
+    okButton.title = loc("time.finished.ok", self)
     okButton.keyEquivalent = "\r"
   }
 
