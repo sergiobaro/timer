@@ -47,7 +47,7 @@ extension TimeSelectorViewController: NSWindowDelegate {
 
 private class MinutesFormatter: NumberFormatter {
   
-  let allowedCharacters = CharacterSet(charactersIn: "123456789")
+  let allowedCharacters = CharacterSet(charactersIn: "0123456789")
   let maxLength = 4
   
   override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {

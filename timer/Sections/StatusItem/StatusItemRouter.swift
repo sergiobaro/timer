@@ -10,6 +10,7 @@ protocol StatusItemRouter {
 class StatusItemRouterDefault: StatusItemRouter {
   
   private var timerFinishedPopover: NSPopover?
+  private var timeSelectorWindowController: NSWindowController?
   
   private weak var statusItem: NSStatusItem?
   
@@ -25,19 +26,23 @@ class StatusItemRouterDefault: StatusItemRouter {
     popover.contentViewController = vc
     popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
     
-    self.timerFinishedPopover = popover
+    timerFinishedPopover = popover
   }
   
   func hideFinished() {
-    self.timerFinishedPopover?.close()
-    self.timerFinishedPopover = nil
+    timerFinishedPopover?.close()
+    timerFinishedPopover = nil
   }
   
   func showTimeSelector(delegate: TimeSelectorDelegate) {
+    timeSelectorWindowController?.close()
+    
     NSApplication.shared.activate(ignoringOtherApps: true)
     
     let windowController = TimeSeletorSectionBuilder().build(delegate: delegate)
     windowController.window?.makeKeyAndOrderFront(self)
     windowController.window?.center()
+    
+    timeSelectorWindowController = windowController
   }
 }
