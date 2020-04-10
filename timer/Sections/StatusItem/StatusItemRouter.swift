@@ -6,8 +6,8 @@ protocol StatusItemRouter {
   func closeFinished()
   func showTimeSelector(delegate: TimeSelectorDelegate)
   func closeTimeSelector()
-
   func closeOpenWindows()
+  func quitApp()
 }
 
 class StatusItemRouterDefault: StatusItemRouter {
@@ -57,5 +57,9 @@ class StatusItemRouterDefault: StatusItemRouter {
   func closeOpenWindows() {
     closeFinished()
     closeTimeSelector()
+  }
+
+  func quitApp() {
+    NSApplication.shared.terminate(self)
   }
 }

@@ -8,15 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		D91176E9243A3CA400980AB6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176E8243A3CA400980AB6 /* Constants.swift */; };
-		D91176ED243A3DBF00980AB6 /* MenuItemsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176EC243A3DBF00980AB6 /* MenuItemsBuilder.swift */; };
 		D91176F0243A3DD200980AB6 /* ActionMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176EF243A3DD200980AB6 /* ActionMenuItem.swift */; };
 		D91176F2243A3FB400980AB6 /* StatusItemRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176F1243A3FB400980AB6 /* StatusItemRouter.swift */; };
 		D91176F4243A409800980AB6 /* StatusItemSectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176F3243A409800980AB6 /* StatusItemSectionBuilder.swift */; };
 		D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A492439A45F00D221E3 /* AppDelegate.swift */; };
 		D9635A762439AF9600D221E3 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9635A752439AF9600D221E3 /* Application.xib */; };
 		D9635A7C2439C4B700D221E3 /* StatusItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A7B2439C4B700D221E3 /* StatusItemController.swift */; };
+		D991B80B2440A42E00E6C84D /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D991B80A2440A42E00E6C84D /* Menu.swift */; };
+		D991B80D2440B4A500E6C84D /* MenuBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D991B80C2440B4A500E6C84D /* MenuBuilder.swift */; };
 		D9C2EA7F24405D8800606452 /* SeparatorMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2EA7E24405D8800606452 /* SeparatorMenuItem.swift */; };
-		D9C2EA832440634F00606452 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C2EA822440634F00606452 /* Application.swift */; };
 		D9D15EF92439CD02000598A4 /* TimerFinishedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9D15EF72439CD02000598A4 /* TimerFinishedViewController.xib */; };
 		D9D15EFA2439CD02000598A4 /* TimerFinishedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D15EF82439CD02000598A4 /* TimerFinishedViewController.swift */; };
 		D9DD4543243B112300B49DD6 /* TimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DD4542243B112300B49DD6 /* TimeSelector.storyboard */; };
@@ -32,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		D91176E8243A3CA400980AB6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		D91176EC243A3DBF00980AB6 /* MenuItemsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemsBuilder.swift; sourceTree = "<group>"; };
 		D91176EF243A3DD200980AB6 /* ActionMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuItem.swift; sourceTree = "<group>"; };
 		D91176F1243A3FB400980AB6 /* StatusItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemRouter.swift; sourceTree = "<group>"; };
 		D91176F3243A409800980AB6 /* StatusItemSectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemSectionBuilder.swift; sourceTree = "<group>"; };
@@ -42,8 +41,9 @@
 		D9635A532439A46000D221E3 /* timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = timer.entitlements; sourceTree = "<group>"; };
 		D9635A752439AF9600D221E3 /* Application.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Application.xib; sourceTree = "<group>"; };
 		D9635A7B2439C4B700D221E3 /* StatusItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemController.swift; sourceTree = "<group>"; };
+		D991B80A2440A42E00E6C84D /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		D991B80C2440B4A500E6C84D /* MenuBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBuilder.swift; sourceTree = "<group>"; };
 		D9C2EA7E24405D8800606452 /* SeparatorMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorMenuItem.swift; sourceTree = "<group>"; };
-		D9C2EA822440634F00606452 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		D9D15EF72439CD02000598A4 /* TimerFinishedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerFinishedViewController.xib; sourceTree = "<group>"; };
 		D9D15EF82439CD02000598A4 /* TimerFinishedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimerFinishedViewController.swift; sourceTree = "<group>"; };
 		D9DD4542243B112300B49DD6 /* TimeSelector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeSelector.storyboard; sourceTree = "<group>"; };
@@ -96,14 +96,15 @@
 			path = Sections;
 			sourceTree = "<group>";
 		};
-		D91176EE243A3DC300980AB6 /* MenuItem */ = {
+		D91176EE243A3DC300980AB6 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				D91176EC243A3DBF00980AB6 /* MenuItemsBuilder.swift */,
 				D91176EF243A3DD200980AB6 /* ActionMenuItem.swift */,
 				D9C2EA7E24405D8800606452 /* SeparatorMenuItem.swift */,
+				D991B80A2440A42E00E6C84D /* Menu.swift */,
+				D991B80C2440B4A500E6C84D /* MenuBuilder.swift */,
 			);
-			path = MenuItem;
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		D9635A3D2439A45E00D221E3 = {
@@ -139,7 +140,7 @@
 		D9635A7A2439C4A300D221E3 /* StatusItem */ = {
 			isa = PBXGroup;
 			children = (
-				D91176EE243A3DC300980AB6 /* MenuItem */,
+				D91176EE243A3DC300980AB6 /* Menu */,
 				D9F0B3592439E4F500E1D3CB /* StatusItemView.swift */,
 				D91176F1243A3FB400980AB6 /* StatusItemRouter.swift */,
 				D9635A7B2439C4B700D221E3 /* StatusItemController.swift */,
@@ -151,7 +152,6 @@
 		D9C2EA802440633A00606452 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				D9C2EA822440634F00606452 /* Application.swift */,
 				D9F0B3572439E3E100E1D3CB /* Sounds.swift */,
 			);
 			path = Services;
@@ -287,12 +287,12 @@
 				D9F0B35C2439E7A900E1D3CB /* TickTimer.swift in Sources */,
 				D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */,
 				D91176F4243A409800980AB6 /* StatusItemSectionBuilder.swift in Sources */,
-				D9C2EA832440634F00606452 /* Application.swift in Sources */,
 				D9C2EA7F24405D8800606452 /* SeparatorMenuItem.swift in Sources */,
+				D991B80D2440B4A500E6C84D /* MenuBuilder.swift in Sources */,
 				D9F0B3632439ECF300E1D3CB /* TimerFormatter.swift in Sources */,
-				D91176ED243A3DBF00980AB6 /* MenuItemsBuilder.swift in Sources */,
 				D9D15EFA2439CD02000598A4 /* TimerFinishedViewController.swift in Sources */,
 				D9F0B3582439E3E100E1D3CB /* Sounds.swift in Sources */,
+				D991B80B2440A42E00E6C84D /* Menu.swift in Sources */,
 				D91176F0243A3DD200980AB6 /* ActionMenuItem.swift in Sources */,
 				D91176F2243A3FB400980AB6 /* StatusItemRouter.swift in Sources */,
 				D9F0B3612439EBD500E1D3CB /* Localize.swift in Sources */,

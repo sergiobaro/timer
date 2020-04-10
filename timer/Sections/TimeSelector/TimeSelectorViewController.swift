@@ -2,8 +2,7 @@ import Cocoa
 
 protocol TimeSelectorDelegate: class {
 
-  func timeSelectorDidSelectMinutes(_ minutes: Int)
-  func timeSelectorDidClose()
+  func timeSelectorDidSelectTime(_ timeInterval: TimeInterval)
 }
 
 class TimeSelectorViewController: NSViewController {
@@ -18,7 +17,6 @@ class TimeSelectorViewController: NSViewController {
     super.viewDidAppear()
 
     view.window?.title = localize("time.selector.title")
-    view.window?.delegate = self
 
     messageLabel.stringValue = localize("time.selector.message")
     minutesTextField.placeholderString = localize("time.selector.placeholder")
@@ -35,15 +33,9 @@ class TimeSelectorViewController: NSViewController {
     }
 
     view.window?.close()
-    delegate?.timeSelectorDidSelectMinutes(minutes)
-    delegate?.timeSelectorDidClose()
-  }
-}
 
-extension TimeSelectorViewController: NSWindowDelegate {
-
-  func windowWillClose(_ notification: Notification) {
-    delegate?.timeSelectorDidClose()
+    let timeInterval = TimeInterval(minutes * 60)
+    delegate?.timeSelectorDidSelectTime(timeInterval)
   }
 }
 

@@ -1,6 +1,7 @@
 
 "statusbar.title" = "Timer";
 "statusbar.start" = "Start";
+"statusbar.start.custom" = "Start...";
 "statusbar.stop" = "Stop";
 "statusbar.quit" = "Quit";
 

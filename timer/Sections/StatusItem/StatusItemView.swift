@@ -3,7 +3,7 @@ import Cocoa
 protocol StatusItemView: class {
 
   var title: String? { get set }
-  var menuItems: [MenuItem] { get set }
+  var menu: Menu? { get set }
 }
 
 class StatusItemViewProxy: StatusItemView {
@@ -13,9 +13,9 @@ class StatusItemViewProxy: StatusItemView {
     set { statusItem.button?.title = newValue ?? "" }
   }
 
-  var menuItems: [MenuItem] = [] {
+  var menu: Menu? {
     didSet {
-      updateMenuItems()
+      statusItem.menu = menu?.build()
     }
   }
 
@@ -23,16 +23,5 @@ class StatusItemViewProxy: StatusItemView {
 
   init(statusItem: NSStatusItem) {
     self.statusItem = statusItem
-  }
-}
-
-private extension StatusItemViewProxy {
-
-  func updateMenuItems() {
-    let menu = NSMenu()
-
-    menu.items = menuItems.map { $0.build() }
-
-    statusItem.menu = menu
   }
 }
