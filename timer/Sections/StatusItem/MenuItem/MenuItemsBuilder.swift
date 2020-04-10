@@ -1,10 +1,15 @@
-import Foundation
+import AppKit
+
+protocol MenuItem {
+  
+  func build() -> NSMenuItem
+}
 
 class MenuItemsBuilder {
   
   private var items = [MenuItem]()
   
-  func add(menuItem: MenuItem) -> Self {
+  func add(_ menuItem: MenuItem) -> Self {
     items.append(menuItem)
     return self
   }
@@ -14,8 +19,9 @@ class MenuItemsBuilder {
     return self
   }
   
-  func add(title: String, callback: @escaping MenuItem.MenuItemCallback) -> Self {
-    return add(menuItem: MenuItem(title: title, callback: callback))
+  func addSeparator() -> Self {
+    items.append(SeparatorMenuItem())
+    return self
   }
   
   func build() -> [MenuItem] {

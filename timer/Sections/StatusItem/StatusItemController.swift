@@ -7,12 +7,20 @@ class StatusItemController {
   private let router: StatusItemRouter
   private let timer: TickTimer
   private let sounds: SoundsService
+  private let application: ApplicationService
   
-  init(view: StatusItemView, router: StatusItemRouter, timer: TickTimer, sounds: SoundsService) {
+  init(
+    view: StatusItemView,
+    router: StatusItemRouter,
+    timer: TickTimer,
+    sounds: SoundsService,
+    application: ApplicationService
+  ) {
     self.view = view
     self.router = router
     self.timer = timer
     self.sounds = sounds
+    self.application = application
     
     setInitialState()
   }
@@ -25,10 +33,14 @@ private extension StatusItemController {
     
     view.menuItems = MenuItemsBuilder()
       .add(menuItems: buildDefaultMenuItems())
-      .add(title: localize("statusbar.start") + "...", callback: { [weak self] in
+      .add(ActionMenuItem(title: localize("statusbar.start") + "...", callback: { [weak self] in
         guard let self = self else { return }
         self.router.showTimeSelector(delegate: self)
-      })
+      }))
+      .addSeparator()
+      .add(ActionMenuItem(title: localize("statusbar.quit"), callback: { [weak self] in
+        self?.application.close()
+      }))
       .build()
   }
   
@@ -36,9 +48,13 @@ private extension StatusItemController {
     router.hideFinished()
     
     view.menuItems = MenuItemsBuilder()
-      .add(title: localize("statusbar.stop"), callback: { [weak self] in
+      .add(ActionMenuItem(title: localize("statusbar.stop"), callback: { [weak self] in
         self?.stopTimer()
-      })
+      }))
+      .addSeparator()
+      .add(ActionMenuItem(title: localize("statusbar.quit"), callback: { [weak self] in
+        self?.application.close()
+      }))
       .build()
     
     timer.start { [weak self] timeInterval in
@@ -67,7 +83,7 @@ private extension StatusItemController {
     return Constants.defaultTimeIntervals.map({ timeInterval in
       let timeString = formatter.format(timeInterval)!
       let title = localize("statusbar.start") + " \(timeString)"
-      return MenuItem(title: title) { [weak self] in
+      return ActionMenuItem(title: title) { [weak self] in
         self?.startTimer(finishTimeInterval: timeInterval)
       }
     })

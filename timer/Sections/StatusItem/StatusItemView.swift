@@ -31,19 +31,8 @@ private extension StatusItemViewProxy {
   func updateMenuItems() {
     let menu = NSMenu()
     
-    menu.items = menuItems.enumerated().map { index, menuItem in
-      let item = NSMenuItem(title: menuItem.title, action: #selector(tapMenuItem), keyEquivalent: "")
-      item.target = self
-      item.tag = index
-      return item
-    }
+    menu.items = menuItems.map { $0.build() }
     
     statusItem.menu = menu
-  }
-  
-  @objc private func tapMenuItem(_ sender: NSMenuItem) {
-    let index = sender.tag
-    let menuItem = menuItems[index]
-    menuItem.callback()
   }
 }

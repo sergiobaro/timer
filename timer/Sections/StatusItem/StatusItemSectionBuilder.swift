@@ -9,7 +9,8 @@ class StatusItemSectionBuilder {
       view: StatusItemViewProxy(statusItem: statusItem),
       router: StatusItemRouterDefault(statusItem: statusItem),
       timer: TickTimerDefault(),
-      sounds: SoundsServiceDefault()
+      sounds: SoundsServiceDefault(),
+      application: ApplicationServiceDefault()
     )
   }
 }

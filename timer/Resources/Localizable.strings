@@ -2,6 +2,7 @@
 "statusbar.title" = "Timer";
 "statusbar.start" = "Start";
 "statusbar.stop" = "Stop";
+"statusbar.quit" = "Quit";
 
 "timer.finished.message" = "Finished!!";
 "timer.finished.ok" = "OK";
