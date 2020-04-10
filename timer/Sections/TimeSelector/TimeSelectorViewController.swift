@@ -24,6 +24,8 @@ class TimeSelectorViewController: NSViewController {
     minutesTextField.placeholderString = localize("time.selector.placeholder")
     minutesTextField.formatter = MinutesFormatter()
     startButton.title = localize("time.selector.start.button")
+    startButton.keyEquivalent = "\r"
+    
     minutesTextField.becomeFirstResponder()
   }
   
