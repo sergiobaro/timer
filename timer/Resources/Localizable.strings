@@ -1,6 +1,12 @@
 
-"title" = "Timer";
-"start" = "Start";
-"stop" = "Stop";
-"finished" = "Finished!!";
-"ok" = "OK";
+"statusbar.title" = "Timer";
+"statusbar.start" = "Start";
+"statusbar.stop" = "Stop";
+
+"timer.finished.message" = "Finished!!";
+"timer.finished.ok" = "OK";
+
+"time.selector.title" = "Timer";
+"time.selector.message" = "Select a time...";
+"time.selector.placeholder" = "minutes...";
+"time.selector.start.button" = "Start";

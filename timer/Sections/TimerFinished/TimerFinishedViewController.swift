@@ -8,8 +8,8 @@ class TimerFinishedViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    doneTextField.stringValue = localize("finished")
-    okButton.title = localize("ok")
+    doneTextField.stringValue = localize("timer.finished.message")
+    okButton.title = localize("timer.finished.ok")
   }
   
   @IBAction private func tapOkButton(_ sender: NSButton) {

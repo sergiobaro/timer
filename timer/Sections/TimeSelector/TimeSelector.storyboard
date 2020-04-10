@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="QSW-a0-u1u">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="Jd3-4H-D8w">
+            <objects>
+                <windowController id="QSW-a0-u1u" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="UCp-Xp-Edi">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="228" height="182"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <connections>
+                            <outlet property="delegate" destination="QSW-a0-u1u" id="33H-Gg-Llz"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="RjE-46-kwE" kind="relationship" relationship="window.shadowedContentViewController" id="of0-mZ-AKC"/>
+                    </connections>
+                </windowController>
+                <customObject id="LO7-NJ-7Cn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13" y="80"/>
+        </scene>
+        <!--Time Selector View Controller-->
+        <scene sceneID="BoM-wr-fiO">
+            <objects>
+                <viewController id="RjE-46-kwE" customClass="TimeSelectorViewController" customModule="timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="a7i-oN-gIg">
+                        <rect key="frame" x="0.0" y="0.0" width="218" height="138"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yxp-Cv-RWm">
+                                <rect key="frame" x="91" y="102" width="37" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="3UR-lt-4WV">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uvm-gj-Ckb">
+                                <rect key="frame" x="69" y="13" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I4p-gq-Zgd">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="tapStartButton:" target="RjE-46-kwE" id="bfT-30-78d"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yDx-da-d8l">
+                                <rect key="frame" x="69" y="61" width="80" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="Whf-Mq-2mY"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="CFY-DS-pAJ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Uvm-gj-Ckb" secondAttribute="bottom" constant="20" id="4yV-wJ-duy"/>
+                            <constraint firstItem="Yxp-Cv-RWm" firstAttribute="top" secondItem="a7i-oN-gIg" secondAttribute="top" constant="20" id="6oh-3n-EXD"/>
+                            <constraint firstItem="yDx-da-d8l" firstAttribute="top" secondItem="Yxp-Cv-RWm" secondAttribute="bottom" constant="20" id="SLE-ZY-62m"/>
+                            <constraint firstItem="Uvm-gj-Ckb" firstAttribute="top" secondItem="yDx-da-d8l" secondAttribute="bottom" constant="20" id="W0W-se-Jfo"/>
+                            <constraint firstItem="Yxp-Cv-RWm" firstAttribute="centerX" secondItem="a7i-oN-gIg" secondAttribute="centerX" id="Z6J-Gu-FAg"/>
+                            <constraint firstItem="yDx-da-d8l" firstAttribute="centerX" secondItem="a7i-oN-gIg" secondAttribute="centerX" id="e2y-7w-hef"/>
+                            <constraint firstItem="Uvm-gj-Ckb" firstAttribute="centerX" secondItem="a7i-oN-gIg" secondAttribute="centerX" id="nxS-FO-7Pw"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="Yxp-Cv-RWm" id="82m-pN-DVg"/>
+                        <outlet property="minutesTextField" destination="yDx-da-d8l" id="Sxc-sF-NJ6"/>
+                        <outlet property="startButton" destination="Uvm-gj-Ckb" id="8Zd-fz-tIx"/>
+                    </connections>
+                </viewController>
+                <customObject id="5h8-ZK-XHH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="13" y="432"/>
+        </scene>
+    </scenes>
+</document>

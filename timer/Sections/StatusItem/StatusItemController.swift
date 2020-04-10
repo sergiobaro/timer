@@ -21,10 +21,14 @@ class StatusItemController {
 private extension StatusItemController {
   
   func setInitialState() {
-    view.title = localize("title")
+    view.title = localize("statusbar.title")
     
     view.menuItems = MenuItemsBuilder()
       .add(menuItems: buildDefaultMenuItems())
+      .add(title: localize("statusbar.start") + "...", callback: { [weak self] in
+        guard let self = self else { return }
+        self.router.showTimeSelector(delegate: self)
+      })
       .build()
   }
   
@@ -32,7 +36,7 @@ private extension StatusItemController {
     router.hideFinished()
     
     view.menuItems = MenuItemsBuilder()
-      .add(title: localize("stop"), callback: { [weak self] in
+      .add(title: localize("statusbar.stop"), callback: { [weak self] in
         self?.stopTimer()
       })
       .build()
@@ -62,10 +66,22 @@ private extension StatusItemController {
   func buildDefaultMenuItems() -> [MenuItem] {
     return Constants.defaultTimeIntervals.map({ timeInterval in
       let timeString = formatter.format(timeInterval)!
-      let title = localize("start") + " \(timeString)"
+      let title = localize("statusbar.start") + " \(timeString)"
       return MenuItem(title: title) { [weak self] in
         self?.startTimer(finishTimeInterval: timeInterval)
       }
     })
+  }
+}
+
+extension StatusItemController: TimeSelectorDelegate {
+  
+  func timeSelectorDidSelectMinutes(_ minutes: Int) {
+    let timeInterval = TimeInterval(minutes * 60)
+    self.startTimer(finishTimeInterval: timeInterval)
+  }
+  
+  func timeSelectorDidClose() {
+    
   }
 }
