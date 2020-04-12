@@ -1,0 +1,6 @@
+
+"history.title" = "History";
+"history.tasks.column.name" = "Tasks";
+"history.tasks.column.duration" = "Duration";
+"history.tasks.column.completed" = "Completed";
+"history.tasks.empty" = "No tasks recorded yet!!";

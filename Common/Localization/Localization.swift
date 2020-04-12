@@ -2,10 +2,6 @@ import Foundation
 
 public func loc(_ key: String, _ object: AnyObject?) -> String {
   let bundle = Bundle.for(object) ?? .main
-  return loc(key, bundle)
-}
-
-public func loc(_ key: String, _ bundle: Bundle) -> String {
   return NSLocalizedString(key, tableName: nil, bundle: bundle, value: "", comment: "")
 }
 

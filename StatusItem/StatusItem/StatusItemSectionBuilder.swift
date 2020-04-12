@@ -1,5 +1,6 @@
 import Cocoa
 import Common
+import History
 
 public class StatusItemSectionBuilder {
 
@@ -12,7 +13,8 @@ public class StatusItemSectionBuilder {
       view: StatusItemViewProxy(statusItem: statusItem),
       router: StatusItemRouterDefault(statusItem: statusItem),
       timer: TickTimerDefault(),
-      sounds: SoundsServiceDefault()
+      sounds: SoundsServiceDefault(),
+      history: HistoryFactory().makeRepository()
     )
   }
 }

@@ -1,5 +1,6 @@
 import Foundation
 import TimeSelector
+import History
 import Common
 
 public protocol StatusItemController {
@@ -15,17 +16,22 @@ class StatusItemControllerDefault: StatusItemController {
   private let router: StatusItemRouter
   private let timer: TickTimer
   private let sounds: SoundsService
+  private let history: HistoryRepository
+
+  private var currentTask: Task?
 
   init(
     view: StatusItemView,
     router: StatusItemRouter,
     timer: TickTimer,
-    sounds: SoundsService
+    sounds: SoundsService,
+    history: HistoryRepository
   ) {
     self.view = view
     self.router = router
     self.timer = timer
     self.sounds = sounds
+    self.history = history
   }
 
   func start() {
@@ -40,6 +46,8 @@ private extension StatusItemControllerDefault {
 
     view.menu = MenuBuilder()
       .addStartItems()
+      .addSeparator()
+      .addHistoryItem()
       .addQuitAppItem()
       .build(delegate: self)
   }
@@ -47,8 +55,12 @@ private extension StatusItemControllerDefault {
   @objc func startTimer(finishTimeInterval: TimeInterval) {
     router.closeOpenWindows()
 
+    currentTask = Task(name: "", duration: finishTimeInterval, startedAt: Date(), completed: false)
+
     view.menu = MenuBuilder()
-      .addStopItem()
+      .addCancelItem()
+      .addSeparator()
+      .addHistoryItem()
       .addQuitAppItem()
       .build(delegate: self)
 
@@ -67,6 +79,10 @@ private extension StatusItemControllerDefault {
   }
 
   func finish() {
+    if var task = currentTask {
+      task.completed = true
+      history.save(task: task)
+    }
     stopTimer()
     sounds.playFinished()
     router.showFinished()
@@ -86,8 +102,15 @@ extension StatusItemControllerDefault: MenuDelegate {
     startTimer(finishTimeInterval: timeInterval)
   }
 
-  func menuDidStopTimer() {
+  func menuDidCancelTimer() {
+    if let task = currentTask {
+      history.save(task: task)
+    }
     stopTimer()
+  }
+
+  func menuDidSelectHistory() {
+    router.showHistory()
   }
 
   func menuDidSelectTime() {

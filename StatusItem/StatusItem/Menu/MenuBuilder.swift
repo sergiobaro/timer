@@ -10,7 +10,7 @@ class MenuBuilder {
     let formatter = TimerFormatter()
 
     let startDefaultItems: [MenuItem] = Constants.defaultTimeIntervals.map({ timeInterval in
-      let timeString = formatter.format(timeInterval)!
+      let timeString = formatter.format(timeInterval)
       let title = loc("statusbar.start", self) + " \(timeString)"
       return ActionMenuItem(title: title) { [weak menu] in
         menu?.delegate?.menuDidStartTime(timeInterval)
@@ -26,18 +26,30 @@ class MenuBuilder {
     return self
   }
 
-  func addStopItem() -> Self {
-    let stopItem = ActionMenuItem(title: loc("statusbar.stop", self)) { [weak menu] in
-      menu?.delegate?.menuDidStopTimer()
+  func addCancelItem() -> Self {
+    let stopItem = ActionMenuItem(title: loc("statusbar.cancel", self)) { [weak menu] in
+      menu?.delegate?.menuDidCancelTimer()
     }
     items.append(stopItem)
 
     return self
   }
 
-  func addQuitAppItem() -> Self {
+  func addSeparator() -> Self {
     items.append(SeparatorMenuItem())
+    return self
+  }
 
+  func addHistoryItem() -> Self {
+    let historyItem = ActionMenuItem(title: loc("statusbar.history", self)) { [weak menu] in
+      menu?.delegate?.menuDidSelectHistory()
+    }
+    items.append(historyItem)
+
+    return self
+  }
+
+  func addQuitAppItem() -> Self {
     let quitItem = ActionMenuItem(title: loc("statusbar.quit", self)) { [weak menu] in
       menu?.delegate?.menuDidQuitApp()
     }

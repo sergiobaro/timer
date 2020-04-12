@@ -13,7 +13,7 @@ public class TimerFormatter {
 
   public init() { }
 
-  public func format(_ timeInterval: TimeInterval) -> String? {
-    formatter.string(from: timeInterval)
+  public func format(_ timeInterval: TimeInterval) -> String {
+    formatter.string(from: timeInterval) ?? "00:00"
   }
 }
