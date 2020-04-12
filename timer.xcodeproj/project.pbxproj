@@ -295,21 +295,21 @@
 			children = (
 				D91176E8243A3CA400980AB6 /* Constants.swift */,
 				D9C2EA802440633A00606452 /* Sounds */,
-				D991B8502440C07100E6C84D /* Timer */,
+				D991B8502440C07100E6C84D /* Timers */,
 				D991B84F2440C06300E6C84D /* Formatters */,
-				D991B84E2440C06000E6C84D /* Localize */,
+				D991B84E2440C06000E6C84D /* Localization */,
 				D991B82C2440BD2800E6C84D /* Common.h */,
 				D991B82D2440BD2800E6C84D /* Info.plist */,
 			);
 			path = Common;
 			sourceTree = "<group>";
 		};
-		D991B84E2440C06000E6C84D /* Localize */ = {
+		D991B84E2440C06000E6C84D /* Localization */ = {
 			isa = PBXGroup;
 			children = (
 				D9F0B3602439EBD500E1D3CB /* Localization.swift */,
 			);
-			path = Localize;
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		D991B84F2440C06300E6C84D /* Formatters */ = {
@@ -320,12 +320,12 @@
 			path = Formatters;
 			sourceTree = "<group>";
 		};
-		D991B8502440C07100E6C84D /* Timer */ = {
+		D991B8502440C07100E6C84D /* Timers */ = {
 			isa = PBXGroup;
 			children = (
 				D9F0B35B2439E7A900E1D3CB /* TickTimer.swift */,
 			);
-			path = Timer;
+			path = Timers;
 			sourceTree = "<group>";
 		};
 		D991B8572440C09D00E6C84D /* StatusItem */ = {
