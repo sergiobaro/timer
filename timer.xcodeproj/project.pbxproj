@@ -378,8 +378,8 @@
 		D97A7BA92443860C00BA291E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				D97A7BAC2443869D00BA291E /* HistoryRepository.swift */,
 				D97A7BB024438C2B00BA291E /* Task.swift */,
+				D97A7BAC2443869D00BA291E /* HistoryRepository.swift */,
 				D97A7BB2244397FC00BA291E /* History.xcdatamodeld */,
 			);
 			path = Repository;

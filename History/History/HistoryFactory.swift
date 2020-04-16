@@ -5,7 +5,7 @@ public final class HistoryFactory {
   public init() { }
 
   public func makeRepository() -> HistoryRepository {
-    HistoryRepositoryInMemory.shared
+    HistoryRepositoryDefault.create()
   }
 
   public func makeViewController() -> NSWindowController? {
