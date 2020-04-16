@@ -52,12 +52,13 @@ private extension StatusItemControllerDefault {
       .build(delegate: self)
   }
 
-  @objc func startTimer(finishTimeInterval: TimeInterval) {
+  @objc func startTimer(name: String, finishTimeInterval: TimeInterval) {
     router.closeOpenWindows()
 
-    currentTask = Task(name: "", duration: finishTimeInterval, startedAt: Date(), completed: false)
+    currentTask = Task(name: name, duration: finishTimeInterval, startedAt: Date(), completed: false)
 
     view.menu = MenuBuilder()
+      .addCurrentTimerItem(with: name)
       .addCancelItem()
       .addSeparator()
       .addHistoryItem()
@@ -91,15 +92,15 @@ private extension StatusItemControllerDefault {
 
 extension StatusItemControllerDefault: TimeSelectorDelegate {
 
-  func timeSelectorDidSelectTime(_ timeInterval: TimeInterval) {
-    startTimer(finishTimeInterval: timeInterval)
+  func timeSelectorDidSelect(name: String, timeInterval: TimeInterval) {
+    startTimer(name: name, finishTimeInterval: timeInterval)
   }
 }
 
 extension StatusItemControllerDefault: MenuDelegate {
 
   func menuDidStartTime(_ timeInterval: TimeInterval) {
-    startTimer(finishTimeInterval: timeInterval)
+    startTimer(name: "", finishTimeInterval: timeInterval)
   }
 
   func menuDidCancelTimer() {

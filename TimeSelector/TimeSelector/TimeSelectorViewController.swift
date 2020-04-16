@@ -5,7 +5,7 @@ class TimeSelectorViewController: NSViewController {
 
   weak var delegate: TimeSelectorDelegate?
 
-  @IBOutlet private weak var messageLabel: NSTextField!
+  @IBOutlet private weak var nameTextField: NSTextField!
   @IBOutlet private weak var minutesTextField: NSTextField!
   @IBOutlet private weak var startButton: NSButton!
 
@@ -14,13 +14,13 @@ class TimeSelectorViewController: NSViewController {
 
     view.window?.title = loc("time.selector.title", self)
 
-    messageLabel.stringValue = loc("time.selector.message", self)
-    minutesTextField.placeholderString = loc("time.selector.placeholder", self)
+    nameTextField.placeholderString = loc("time.selector.name.placeholder", self)
+    minutesTextField.placeholderString = loc("time.selector.minutes.placeholder", self)
     minutesTextField.formatter = MinutesFormatter()
     startButton.title = loc("time.selector.start.button", self)
     startButton.keyEquivalent = "\r"
 
-    minutesTextField.becomeFirstResponder()
+    nameTextField.becomeFirstResponder()
   }
 
   @IBAction private func tapStartButton(_ sender: NSButton) {
@@ -31,7 +31,7 @@ class TimeSelectorViewController: NSViewController {
     view.window?.close()
 
     let timeInterval = TimeInterval(minutes * 60)
-    delegate?.timeSelectorDidSelectTime(timeInterval)
+    delegate?.timeSelectorDidSelect(name: nameTextField.stringValue, timeInterval: timeInterval)
   }
 }
 
@@ -42,7 +42,6 @@ private class MinutesFormatter: NumberFormatter {
 
   // swiftlint:disable:next line_length
   override func isPartialStringValid(_ partialString: String, newEditingString newString: AutoreleasingUnsafeMutablePointer<NSString?>?, errorDescription error: AutoreleasingUnsafeMutablePointer<NSString?>?) -> Bool {
-
     if partialString.count > maxLength {
       return false
     }

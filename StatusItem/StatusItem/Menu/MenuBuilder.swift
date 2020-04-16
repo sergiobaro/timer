@@ -26,6 +26,15 @@ class MenuBuilder {
     return self
   }
 
+  func addCurrentTimerItem(with name: String) -> Self {
+    if !name.isEmpty {
+      let currentTimerItem = DisabledMenuItem(title: "Task: " + name)
+      items.append(currentTimerItem)
+    }
+
+    return self
+  }
+
   func addCancelItem() -> Self {
     let stopItem = ActionMenuItem(title: loc("statusbar.cancel", self)) { [weak menu] in
       menu?.delegate?.menuDidCancelTimer()

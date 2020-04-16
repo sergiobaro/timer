@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D92B71422448888800131681 /* DisabledMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92B71412448888800131681 /* DisabledMenuItem.swift */; };
 		D9635A4A2439A45F00D221E3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9635A492439A45F00D221E3 /* AppDelegate.swift */; };
 		D9635A762439AF9600D221E3 /* Application.xib in Resources */ = {isa = PBXBuildFile; fileRef = D9635A752439AF9600D221E3 /* Application.xib */; };
 		D97A7B932443651A00BA291E /* History.h in Headers */ = {isa = PBXBuildFile; fileRef = D97A7B912443651A00BA291E /* History.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -166,6 +167,7 @@
 		D91176EF243A3DD200980AB6 /* ActionMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionMenuItem.swift; sourceTree = "<group>"; };
 		D91176F1243A3FB400980AB6 /* StatusItemRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemRouter.swift; sourceTree = "<group>"; };
 		D91176F3243A409800980AB6 /* StatusItemSectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemSectionBuilder.swift; sourceTree = "<group>"; };
+		D92B71412448888800131681 /* DisabledMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabledMenuItem.swift; sourceTree = "<group>"; };
 		D9635A462439A45F00D221E3 /* timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9635A492439A45F00D221E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9635A522439A46000D221E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -277,12 +279,21 @@
 		D91176EE243A3DC300980AB6 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				D91176EF243A3DD200980AB6 /* ActionMenuItem.swift */,
-				D9C2EA7E24405D8800606452 /* SeparatorMenuItem.swift */,
+				D92B71432448888F00131681 /* Items */,
 				D991B80A2440A42E00E6C84D /* Menu.swift */,
 				D991B80C2440B4A500E6C84D /* MenuBuilder.swift */,
 			);
 			path = Menu;
+			sourceTree = "<group>";
+		};
+		D92B71432448888F00131681 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				D91176EF243A3DD200980AB6 /* ActionMenuItem.swift */,
+				D9C2EA7E24405D8800606452 /* SeparatorMenuItem.swift */,
+				D92B71412448888800131681 /* DisabledMenuItem.swift */,
+			);
+			path = Items;
 			sourceTree = "<group>";
 		};
 		D9635A3D2439A45E00D221E3 = {
@@ -844,6 +855,7 @@
 				D991B86E2440C10D00E6C84D /* StatusItemController.swift in Sources */,
 				D991B86B2440C10D00E6C84D /* MenuBuilder.swift in Sources */,
 				D991B86A2440C10D00E6C84D /* Menu.swift in Sources */,
+				D92B71422448888800131681 /* DisabledMenuItem.swift in Sources */,
 				D991B86D2440C10D00E6C84D /* StatusItemRouter.swift in Sources */,
 				D991B8682440C10D00E6C84D /* ActionMenuItem.swift in Sources */,
 				D991B8692440C10D00E6C84D /* SeparatorMenuItem.swift in Sources */,

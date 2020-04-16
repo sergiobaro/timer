@@ -4,8 +4,8 @@ class ActionMenuItem: MenuItem {
 
   typealias Callback = () -> Void
 
-  let title: String
-  let callback: Callback
+  private let title: String
+  private let callback: Callback
 
   init(title: String, callback: @escaping Callback) {
     self.title = title

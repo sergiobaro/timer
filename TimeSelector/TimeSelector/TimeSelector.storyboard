@@ -34,14 +34,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="218" height="138"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yxp-Cv-RWm">
-                                <rect key="frame" x="91" y="102" width="37" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="3UR-lt-4WV">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uvm-gj-Ckb">
                                 <rect key="frame" x="69" y="13" width="81" height="32"/>
                                 <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="I4p-gq-Zgd">
@@ -63,20 +55,29 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vVG-aK-ldq">
+                                <rect key="frame" x="20" y="97" width="178" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="I0X-x3-Z4K">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Uvm-gj-Ckb" secondAttribute="bottom" constant="20" id="4yV-wJ-duy"/>
-                            <constraint firstItem="Yxp-Cv-RWm" firstAttribute="top" secondItem="a7i-oN-gIg" secondAttribute="top" constant="20" id="6oh-3n-EXD"/>
-                            <constraint firstItem="yDx-da-d8l" firstAttribute="top" secondItem="Yxp-Cv-RWm" secondAttribute="bottom" constant="20" id="SLE-ZY-62m"/>
+                            <constraint firstItem="yDx-da-d8l" firstAttribute="top" secondItem="vVG-aK-ldq" secondAttribute="bottom" constant="15" id="A37-Rl-nwb"/>
+                            <constraint firstAttribute="trailing" secondItem="vVG-aK-ldq" secondAttribute="trailing" constant="20" id="FHG-zK-Pvf"/>
+                            <constraint firstItem="vVG-aK-ldq" firstAttribute="leading" secondItem="a7i-oN-gIg" secondAttribute="leading" constant="20" id="JEd-RR-2g6"/>
+                            <constraint firstItem="vVG-aK-ldq" firstAttribute="top" secondItem="a7i-oN-gIg" secondAttribute="top" constant="20" id="Orn-gy-3Rs"/>
                             <constraint firstItem="Uvm-gj-Ckb" firstAttribute="top" secondItem="yDx-da-d8l" secondAttribute="bottom" constant="20" id="W0W-se-Jfo"/>
-                            <constraint firstItem="Yxp-Cv-RWm" firstAttribute="centerX" secondItem="a7i-oN-gIg" secondAttribute="centerX" id="Z6J-Gu-FAg"/>
                             <constraint firstItem="yDx-da-d8l" firstAttribute="centerX" secondItem="a7i-oN-gIg" secondAttribute="centerX" id="e2y-7w-hef"/>
                             <constraint firstItem="Uvm-gj-Ckb" firstAttribute="centerX" secondItem="a7i-oN-gIg" secondAttribute="centerX" id="nxS-FO-7Pw"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="messageLabel" destination="Yxp-Cv-RWm" id="82m-pN-DVg"/>
                         <outlet property="minutesTextField" destination="yDx-da-d8l" id="Sxc-sF-NJ6"/>
+                        <outlet property="nameTextField" destination="vVG-aK-ldq" id="r2p-Yc-qmY"/>
                         <outlet property="startButton" destination="Uvm-gj-Ckb" id="8Zd-fz-tIx"/>
                     </connections>
                 </viewController>

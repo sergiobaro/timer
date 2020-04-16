@@ -2,7 +2,7 @@ import Cocoa
 
 public protocol TimeSelectorDelegate: class {
 
-  func timeSelectorDidSelectTime(_ timeInterval: TimeInterval)
+  func timeSelectorDidSelect(name: String, timeInterval: TimeInterval)
 }
 
 public class TimeSeletorSectionBuilder {
