@@ -66,7 +66,7 @@ private extension StatusItemControllerDefault {
       .build(delegate: self)
 
     timer.start { [weak self] timeInterval in
-      self?.view.title = self?.formatter.format(timeInterval)
+      self?.view.title = self?.formatter.format(timeInterval, from: finishTimeInterval)
 
       if timeInterval >= finishTimeInterval {
         self?.finish()
