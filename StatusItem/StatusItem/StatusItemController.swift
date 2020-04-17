@@ -45,7 +45,9 @@ private extension StatusItemControllerDefault {
     view.title = loc("statusbar.title", self)
 
     view.menu = MenuBuilder()
-      .addStartItems()
+      .addCustomStartItem()
+      .addSeparator()
+      .addQuickStartItems()
       .addSeparator()
       .addHistoryItem()
       .addQuitAppItem()
@@ -99,8 +101,9 @@ extension StatusItemControllerDefault: TimeSelectorDelegate {
 
 extension StatusItemControllerDefault: MenuDelegate {
 
-  func menuDidStartTime(_ timeInterval: TimeInterval) {
-    startTimer(name: "", finishTimeInterval: timeInterval)
+  func menuDidQuickStart(_ timeInterval: TimeInterval) {
+    let name = loc("statusbar.start.quick", self) + " " + formatter.format(timeInterval)
+    startTimer(name: name, finishTimeInterval: timeInterval)
   }
 
   func menuDidCancelTimer() {

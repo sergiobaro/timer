@@ -2,7 +2,7 @@ import AppKit
 
 protocol MenuDelegate: class {
 
-  func menuDidStartTime(_ timeInterval: TimeInterval)
+  func menuDidQuickStart(_ timeInterval: TimeInterval)
   func menuDidCancelTimer()
   func menuDidSelectTime()
   func menuDidSelectHistory()

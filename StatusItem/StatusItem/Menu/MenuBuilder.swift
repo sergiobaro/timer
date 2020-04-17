@@ -6,22 +6,28 @@ class MenuBuilder {
   private var items = [MenuItem]()
   private let menu = Menu()
 
-  func addStartItems() -> Self {
-    let formatter = TimerFormatter()
-
-    let startDefaultItems: [MenuItem] = Constants.defaultTimeIntervals.map({ timeInterval in
-      let timeString = formatter.format(timeInterval)
-      let title = loc("statusbar.start", self) + " \(timeString)"
-      return ActionMenuItem(title: title) { [weak menu] in
-        menu?.delegate?.menuDidStartTime(timeInterval)
-      }
-    })
-    items.append(contentsOf: startDefaultItems)
-
+  func addCustomStartItem() -> Self {
     let startCustomItem = ActionMenuItem(title: loc("statusbar.start.custom", self)) { [weak menu] in
       menu?.delegate?.menuDidSelectTime()
     }
     items.append(startCustomItem)
+
+    return self
+  }
+
+  func addQuickStartItems() -> Self {
+    let formatter = TimerFormatter()
+
+    items.append(DisabledMenuItem(title: loc("statusbar.start.quick", self)))
+
+    let startDefaultItems: [MenuItem] = Constants.defaultTimeIntervals.map({ timeInterval in
+      let timeString = formatter.format(timeInterval)
+      let title = "\(timeString)"
+      return ActionMenuItem(title: title) { [weak menu] in
+        menu?.delegate?.menuDidQuickStart(timeInterval)
+      }
+    })
+    items.append(contentsOf: startDefaultItems)
 
     return self
   }
