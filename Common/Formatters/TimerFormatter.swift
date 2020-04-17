@@ -5,13 +5,7 @@ public class TimerFormatter {
   public init() { }
 
   public func format(_ timeInterval: TimeInterval) -> String {
-    let (hours, minutes, seconds) = extract(timeInterval)
-
-    if hours == 0 {
-      return format(minutes: minutes, seconds: seconds)
-    } else {
-      return format(hours: hours, minutes: minutes, seconds: seconds)
-    }
+    format(timeInterval, from: timeInterval)
   }
 
   public func format(_ timeInterval: TimeInterval, from totalTimeInterval: TimeInterval) -> String {
@@ -27,13 +21,6 @@ public class TimerFormatter {
 }
 
 private extension TimerFormatter {
-  func format(hours: Int, minutes: Int, seconds: Int) -> String {
-    return String(hours) + ":" + stringify(minutes) + ":" + stringify(seconds)
-  }
-
-  func format(minutes: Int, seconds: Int) -> String {
-    stringify(minutes) + ":" + stringify(seconds)
-  }
 
   func extract(_ timeInterval: TimeInterval) -> (hours: Int, minutes: Int, seconds: Int) {
     let hours = Int(timeInterval / (60 * 60))
@@ -41,6 +28,14 @@ private extension TimerFormatter {
     let seconds = (Int(timeInterval) % 60)
 
     return (hours, minutes, seconds)
+  }
+
+  func format(hours: Int, minutes: Int, seconds: Int) -> String {
+    String(hours) + ":" + format(minutes: minutes, seconds: seconds)
+  }
+
+  func format(minutes: Int, seconds: Int) -> String {
+    stringify(minutes) + ":" + stringify(seconds)
   }
 
   func stringify(_ integer: Int) -> String {

@@ -14,6 +14,7 @@ class TimerFormatterTests: XCTestCase {
     expect(formatter.format(25 * 60)).to(equal("25:00"))
     expect(formatter.format(60 * 60)).to(equal("1:00:00"))
     expect(formatter.format(1.5 * 60 * 60)).to(equal("1:30:00"))
+    expect(formatter.format(18 * 60 * 60)).to(equal("18:00:00"))
   }
 
   func test_format_from() {
