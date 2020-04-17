@@ -1,5 +1,6 @@
 
 "time.selector.title" = "Timer";
 "time.selector.name.placeholder" = "Name";
-"time.selector.minutes.placeholder" = "Minutes";
+"time.selector.minutes.label" = "Minutes:";
+"time.selector.minutes.placeholder" = "0";
 "time.selector.start.button" = "Start";

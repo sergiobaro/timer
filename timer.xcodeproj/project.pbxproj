@@ -13,7 +13,7 @@
 		D97672062448CC4700332691 /* TimerFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97672052448CC4700332691 /* TimerFormatterTests.swift */; };
 		D97672082448CC4700332691 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D991B82A2440BD2800E6C84D /* Common.framework */; };
 		D97672112448CF7C00332691 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = D97672102448CF7C00332691 /* Nimble */; };
-		D97672132449C3DC00332691 /* TimeSelectorWinfowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97672122449C3DC00332691 /* TimeSelectorWinfowController.swift */; };
+		D97672132449C3DC00332691 /* TimeSelectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97672122449C3DC00332691 /* TimeSelectorWindowController.swift */; };
 		D97A7B932443651A00BA291E /* History.h in Headers */ = {isa = PBXBuildFile; fileRef = D97A7B912443651A00BA291E /* History.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D97A7B962443651A00BA291E /* History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97A7B8F2443651A00BA291E /* History.framework */; };
 		D97A7B972443651A00BA291E /* History.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D97A7B8F2443651A00BA291E /* History.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -188,7 +188,7 @@
 		D97672032448CC4700332691 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97672052448CC4700332691 /* TimerFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFormatterTests.swift; sourceTree = "<group>"; };
 		D97672072448CC4700332691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D97672122449C3DC00332691 /* TimeSelectorWinfowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorWinfowController.swift; sourceTree = "<group>"; };
+		D97672122449C3DC00332691 /* TimeSelectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorWindowController.swift; sourceTree = "<group>"; };
 		D97A7B8F2443651A00BA291E /* History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97A7B912443651A00BA291E /* History.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
 		D97A7B922443651A00BA291E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -493,7 +493,7 @@
 			children = (
 				D9DD4544243B644600B49DD6 /* TimeSelectorSectionBuilder.swift */,
 				D9DD4546243B71EA00B49DD6 /* TimeSelectorViewController.swift */,
-				D97672122449C3DC00332691 /* TimeSelectorWinfowController.swift */,
+				D97672122449C3DC00332691 /* TimeSelectorWindowController.swift */,
 				D9DD4542243B112300B49DD6 /* TimeSelector.storyboard */,
 			);
 			path = TimeSelector;
@@ -916,7 +916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D97672132449C3DC00332691 /* TimeSelectorWinfowController.swift in Sources */,
+				D97672132449C3DC00332691 /* TimeSelectorWindowController.swift in Sources */,
 				D991B8242440BD1300E6C84D /* TimeSelectorSectionBuilder.swift in Sources */,
 				D991B8232440BD1300E6C84D /* TimeSelectorViewController.swift in Sources */,
 			);
