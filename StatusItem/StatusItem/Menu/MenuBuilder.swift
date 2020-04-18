@@ -34,7 +34,8 @@ class MenuBuilder {
 
   func addCurrentTimerItem(with name: String) -> Self {
     if !name.isEmpty {
-      let currentTimerItem = DisabledMenuItem(title: "Task: " + name)
+      let title = "\(loc("task.default.name", self)): \"\(name)\""
+      let currentTimerItem = DisabledMenuItem(title: title)
       items.append(currentTimerItem)
     }
 

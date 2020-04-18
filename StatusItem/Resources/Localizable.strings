@@ -5,3 +5,6 @@
 "statusbar.cancel" = "Cancel";
 "statusbar.history" = "History";
 "statusbar.quit" = "Quit";
+"statusbar.task.completed" = "completed.";
+
+"task.default.name" = "Task";

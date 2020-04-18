@@ -13,7 +13,7 @@ public class StatusItemSectionBuilder {
       view: StatusItemViewProxy(statusItem: statusItem),
       router: StatusItemRouterDefault(statusItem: statusItem),
       timer: TickTimerDefault(),
-      sounds: SoundsServiceDefault(),
+      notifications: ServicesFactory.notifications(),
       history: HistoryFactory().makeRepository()
     )
   }

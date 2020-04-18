@@ -1,12 +1,8 @@
 import Cocoa
 import TimeSelector
-import TimeFinished
 import History
 
 protocol StatusItemRouter {
-
-  func showFinished()
-  func closeFinished()
 
   func showTimeSelector(delegate: TimeSelectorDelegate)
   func closeTimeSelector()
@@ -15,12 +11,12 @@ protocol StatusItemRouter {
   func closeHistory()
 
   func closeOpenWindows()
+  func activatePreviousApp()
   func quitApp()
 }
 
 class StatusItemRouterDefault: StatusItemRouter {
 
-  private var timeFinishedPopover: NSPopover?
   private var timeSelectorWindowController: NSWindowController?
   private var historyWindowController: NSWindowController?
 
@@ -28,21 +24,6 @@ class StatusItemRouterDefault: StatusItemRouter {
 
   init(statusItem: NSStatusItem) {
     self.statusItem = statusItem
-  }
-
-  func showFinished() {
-    guard let button = statusItem?.button else { return }
-
-    let popover = NSPopover()
-    popover.contentViewController = TimeFinishedSectionBuilder().build()
-    popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-
-    timeFinishedPopover = popover
-  }
-
-  func closeFinished() {
-    timeFinishedPopover?.close()
-    timeFinishedPopover = nil
   }
 
   func showTimeSelector(delegate: TimeSelectorDelegate) {
@@ -76,9 +57,13 @@ class StatusItemRouterDefault: StatusItemRouter {
   }
 
   func closeOpenWindows() {
-    closeFinished()
     closeTimeSelector()
     closeHistory()
+  }
+
+  func activatePreviousApp() {
+    let app = NSWorkspace.shared.menuBarOwningApplication
+    app?.activate()
   }
 
   func quitApp() {

@@ -15,7 +15,7 @@ class StatusItemControllerDefault: StatusItemController {
   private let view: StatusItemView
   private let router: StatusItemRouter
   private let timer: TickTimer
-  private let sounds: SoundsService
+  private let notifications: NotificationsService
   private let history: HistoryRepository
 
   private var currentTask: Task?
@@ -24,13 +24,13 @@ class StatusItemControllerDefault: StatusItemController {
     view: StatusItemView,
     router: StatusItemRouter,
     timer: TickTimer,
-    sounds: SoundsService,
+    notifications: NotificationsService,
     history: HistoryRepository
   ) {
     self.view = view
     self.router = router
     self.timer = timer
-    self.sounds = sounds
+    self.notifications = notifications
     self.history = history
   }
 
@@ -54,10 +54,11 @@ private extension StatusItemControllerDefault {
       .build(delegate: self)
   }
 
-  @objc func startTimer(name: String, finishTimeInterval: TimeInterval) {
+  @objc func startTimer(name: String, endTimeInterval: TimeInterval) {
+    router.activatePreviousApp()
     router.closeOpenWindows()
 
-    currentTask = Task(name: name, duration: finishTimeInterval, startedAt: Date(), completed: false)
+    currentTask = Task(name: name, duration: endTimeInterval, startedAt: Date(), completed: false)
 
     view.menu = MenuBuilder()
       .addCurrentTimerItem(with: name)
@@ -68,10 +69,10 @@ private extension StatusItemControllerDefault {
       .build(delegate: self)
 
     timer.start { [weak self] timeInterval in
-      self?.view.title = self?.formatter.format(timeInterval, from: finishTimeInterval)
+      self?.view.title = self?.formatter.format(timeInterval, from: endTimeInterval)
 
-      if timeInterval >= finishTimeInterval {
-        self?.finish()
+      if timeInterval >= endTimeInterval {
+        self?.timerDidFinish()
       }
     }
   }
@@ -81,29 +82,42 @@ private extension StatusItemControllerDefault {
     setInitialState()
   }
 
-  func finish() {
+  func timerDidFinish() {
     if var task = currentTask {
       task.completed = true
-      history.save(task: task)
+      completeTask(task)
     }
     stopTimer()
-    sounds.playFinished()
-    router.showFinished()
+  }
+
+  func completeTask(_ task: Task) {
+    history.save(task: task)
+
+    let message = loc("task.default.name", self) + " \"\(task.name)\" " + loc("statusbar.task.completed", self)
+    notifications.show(message: message)
+  }
+
+  func generateTaskName(timeInterval: TimeInterval) -> String {
+    loc("task.default.name", self) + " " + formatter.format(timeInterval)
   }
 }
 
 extension StatusItemControllerDefault: TimeSelectorDelegate {
 
   func timeSelectorDidSelect(name: String, timeInterval: TimeInterval) {
-    startTimer(name: name, finishTimeInterval: timeInterval)
+    var name = name
+    if name.isEmpty {
+      name = generateTaskName(timeInterval: timeInterval)
+    }
+    startTimer(name: name, endTimeInterval: timeInterval)
   }
 }
 
 extension StatusItemControllerDefault: MenuDelegate {
 
   func menuDidQuickStart(_ timeInterval: TimeInterval) {
-    let name = loc("statusbar.start.quick", self) + " " + formatter.format(timeInterval)
-    startTimer(name: name, finishTimeInterval: timeInterval)
+    let name = generateTaskName(timeInterval: timeInterval)
+    startTimer(name: name, endTimeInterval: timeInterval)
   }
 
   func menuDidCancelTimer() {

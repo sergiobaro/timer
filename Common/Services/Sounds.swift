@@ -5,11 +5,9 @@ public protocol SoundsService {
   func playFinished()
 }
 
-public class SoundsServiceDefault: SoundsService {
+class SoundsServiceDefault: SoundsService {
 
-  public init() { }
-
-  public func playFinished() {
+  func playFinished() {
     NSSound(named: .init("Glass"))?.play()
   }
 }
