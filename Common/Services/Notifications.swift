@@ -12,6 +12,7 @@ class NotificationsServiceDefault: NotificationsService {
 
     notification.title = loc("notifications.title", self)
     notification.subtitle = message
+    notification.hasActionButton = false
     notification.soundName = NSUserNotificationDefaultSoundName
 
     NSUserNotificationCenter.default.deliver(notification)
