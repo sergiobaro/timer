@@ -9,7 +9,7 @@ class HistoryListSectionBuilder {
       return nil
     }
 
-    windowController.window?.minSize = NSSize(width: 520, height: 270)
+    windowController.window?.minSize = NSSize(width: 500, height: 400)
 
     if let view = windowController.contentViewController as? HistoryListViewController {
       let repository = HistoryFactory.makeRepository()

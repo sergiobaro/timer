@@ -8,12 +8,6 @@ protocol HistoryListView: class {
 
 class HistoryListViewController: NSViewController {
 
-  struct Columns {
-    static let name = NSUserInterfaceItemIdentifier(rawValue: "name")
-    static let duration = NSUserInterfaceItemIdentifier(rawValue: "duration")
-    static let completed = NSUserInterfaceItemIdentifier(rawValue: "completed")
-  }
-
   @IBOutlet private var tableView: NSTableView!
   @IBOutlet private var clearButton: NSButton!
 
@@ -28,10 +22,6 @@ class HistoryListViewController: NSViewController {
 
     tableView.dataSource = self
     tableView.delegate = self
-
-    tableView.tableColumn(withIdentifier: Columns.name)?.title = loc("history.tasks.column.name", self)
-    tableView.tableColumn(withIdentifier: Columns.duration)?.title = loc("history.tasks.column.duration", self)
-    tableView.tableColumn(withIdentifier: Columns.completed)?.title = loc("history.tasks.column.completed", self)
 
     clearButton.title = loc("history.clear.button", self)
     clearButton.action = #selector(tapClearButton)
@@ -59,35 +49,32 @@ extension HistoryListViewController: HistoryListView {
 extension HistoryListViewController: NSTableViewDataSource {
 
   func numberOfRows(in tableView: NSTableView) -> Int {
-    tasks.isEmpty ? 1 : tasks.count
+    tasks.count
   }
 }
 
 extension HistoryListViewController: NSTableViewDelegate {
 
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-    guard let cell = tableView.makeView(withIdentifier: .init("cell"), owner: self) as? NSTableCellView else {
-      return nil
-    }
-
-    if tasks.isEmpty {
-      if tableColumn?.identifier == Columns.name {
-        cell.textField?.stringValue = loc("history.tasks.empty", self)
-      } else {
-        cell.textField?.stringValue = ""
-      }
-      return cell
-    }
+    let cell = tableView.makeView(HistoryListTaskCellView.self)
 
     let task = tasks[row]
-    if tableColumn?.identifier == Columns.name {
-      cell.textField?.stringValue = task.name
-    } else if tableColumn?.identifier == Columns.duration {
-      cell.textField?.stringValue = task.duration
-    } else if tableColumn?.identifier == Columns.completed {
-      cell.textField?.stringValue = task.completed
-    }
+    cell?.nameLabel.stringValue = task.name
+    cell?.durationLabel.stringValue = task.duration
+    cell?.completedLabel.stringValue = task.completed
 
     return cell
+  }
+
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    false
+  }
+}
+
+private extension NSTableView {
+
+  func makeView<T: NSTableCellView>(_ type: T.Type) -> T? {
+    let identifier = NSUserInterfaceItemIdentifier(String(describing: type))
+    return makeView(withIdentifier: identifier, owner: nil) as? T
   }
 }

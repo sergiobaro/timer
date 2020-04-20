@@ -33,7 +33,7 @@ extension HistoryListPresenterDefault: HistoryListPresenter {
       HistoryListTask(
         name: $0.name,
         duration: formatter.format($0.duration),
-        completed: $0.completed ? "Yes" : "No"
+        completed: $0.completed ? "Completed" : "Cancelled"
       )
     }
     view?.showTasks(tasks)
