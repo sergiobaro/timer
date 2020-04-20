@@ -1,7 +1,12 @@
 import Cocoa
 import Common
 
-class HistoryViewController: NSViewController {
+protocol HistoryListView: class {
+
+  func showTasks(_ tasks: [HistoryListTask])
+}
+
+class HistoryListViewController: NSViewController {
 
   struct Columns {
     static let name = NSUserInterfaceItemIdentifier(rawValue: "name")
@@ -10,15 +15,11 @@ class HistoryViewController: NSViewController {
   }
 
   @IBOutlet private var tableView: NSTableView!
+  @IBOutlet private var clearButton: NSButton!
 
-  private let timeFormatter = TimerFormatter()
-  private var tasks = [Task]()
+  var presenter: HistoryListPresenter!
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    self.tasks = HistoryFactory().makeRepository().allTasks()
-  }
+  private var tasks = [HistoryListTask]()
 
   override func viewDidAppear() {
     super.viewDidAppear()
@@ -31,17 +32,38 @@ class HistoryViewController: NSViewController {
     tableView.tableColumn(withIdentifier: Columns.name)?.title = loc("history.tasks.column.name", self)
     tableView.tableColumn(withIdentifier: Columns.duration)?.title = loc("history.tasks.column.duration", self)
     tableView.tableColumn(withIdentifier: Columns.completed)?.title = loc("history.tasks.column.completed", self)
+
+    clearButton.title = loc("history.clear.button", self)
+    clearButton.action = #selector(tapClearButton)
+    clearButton.target = self
+
+    presenter.viewIsReady()
   }
 }
 
-extension HistoryViewController: NSTableViewDataSource {
+private extension HistoryListViewController {
+
+  @objc func tapClearButton() {
+    presenter.userTapClear()
+  }
+}
+
+extension HistoryListViewController: HistoryListView {
+
+  func showTasks(_ tasks: [HistoryListTask]) {
+    self.tasks = tasks
+    tableView.reloadData()
+  }
+}
+
+extension HistoryListViewController: NSTableViewDataSource {
 
   func numberOfRows(in tableView: NSTableView) -> Int {
     tasks.isEmpty ? 1 : tasks.count
   }
 }
 
-extension HistoryViewController: NSTableViewDelegate {
+extension HistoryListViewController: NSTableViewDelegate {
 
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
     guard let cell = tableView.makeView(withIdentifier: .init("cell"), owner: self) as? NSTableCellView else {
@@ -61,9 +83,9 @@ extension HistoryViewController: NSTableViewDelegate {
     if tableColumn?.identifier == Columns.name {
       cell.textField?.stringValue = task.name
     } else if tableColumn?.identifier == Columns.duration {
-      cell.textField?.stringValue = timeFormatter.format(task.duration)
+      cell.textField?.stringValue = task.duration
     } else if tableColumn?.identifier == Columns.completed {
-      cell.textField?.stringValue = String(task.completed)
+      cell.textField?.stringValue = task.completed
     }
 
     return cell

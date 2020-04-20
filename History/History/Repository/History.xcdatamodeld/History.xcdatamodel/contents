@@ -5,8 +5,9 @@
         <attribute name="duration" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String" defaultValueString="&quot;&quot;"/>
         <attribute name="startedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="taskId" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="TaskObject" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="TaskObject" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

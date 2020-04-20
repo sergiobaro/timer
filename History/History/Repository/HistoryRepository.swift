@@ -1,16 +1,21 @@
 import CoreData
 
-public protocol HistoryRepository {
-
-  func save(task: Task)
-  func allTasks() -> [Task]
+enum HistoryRepositoryError: Error {
+  case modelNotFound
 }
 
-class HistoryRepositoryDefault: HistoryRepository {
+public protocol HistoryRepository {
 
-  static func create() -> HistoryRepositoryDefault {
+  func save(task: Task) throws
+  func allTasks() -> [Task]
+  func removeAll()
+}
+
+class HistoryRepositoryDefault {
+
+  static func create(completion: @escaping (Error?) -> Void) -> HistoryRepositoryDefault {
     let repository = HistoryRepositoryDefault()
-    repository.load()
+    repository.load(completion: completion)
 
     return repository
   }
@@ -19,25 +24,32 @@ class HistoryRepositoryDefault: HistoryRepository {
 
   private init() { }
 
-  private func load() {
-    container = NSPersistentContainer(name: "History", bundle: Bundle(for: type(of: self)))
-    container?.loadPersistentStores { _, error in
-      if let error = error {
-        fatalError("Unable to load persistent stores: \(error)")
-      }
-    }
-  }
+  private func load(completion: @escaping (Error?) -> Void) {
+    let bundle = Bundle(for: type(of: self))
+    let name = "History"
 
-  func save(task: Task) {
-    guard let context = container?.viewContext else { return }
-
-    mapTaskObject(task, context: context)
-
-    do {
-      try context.save()
-    } catch {
+    guard let modelURL = bundle.url(forResource: name, withExtension: "momd"),
+      let mom = NSManagedObjectModel(contentsOf: modelURL)
+    else {
+      completion(HistoryRepositoryError.modelNotFound)
       return
     }
+
+    container = NSPersistentContainer(name: name, managedObjectModel: mom)
+    container?.loadPersistentStores(completionHandler: { (_, error) in
+      completion(error)
+    })
+  }
+}
+
+extension HistoryRepositoryDefault: HistoryRepository {
+
+  func save(task: Task) throws {
+    guard let context = container?.viewContext else { return }
+
+    mapTaskObject(taskId: UUID().uuidString, task, context: context)
+
+    try context.save()
   }
 
   func allTasks() -> [Task] {
@@ -50,12 +62,30 @@ class HistoryRepositoryDefault: HistoryRepository {
     do {
       return try context.fetch(request).map { mapTask($0) }
     } catch {
+      print(error)
       return []
     }
   }
 
-  private func mapTask(_ taskObject: TaskObject) -> Task {
+  func removeAll() {
+    guard let context = container?.newBackgroundContext() else { return }
+
+    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskObject")
+    let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+    do {
+      try context.execute(deleteRequest)
+    } catch {
+      print(error)
+    }
+  }
+}
+
+private extension HistoryRepositoryDefault {
+
+  func mapTask(_ taskObject: TaskObject) -> Task {
     Task(
+      taskId: taskObject.taskId ?? "",
       name: taskObject.name ?? "",
       duration: taskObject.duration,
       startedAt: taskObject.startedAt ?? Date(),
@@ -64,9 +94,10 @@ class HistoryRepositoryDefault: HistoryRepository {
   }
 
   @discardableResult
-  private func mapTaskObject(_ task: Task, context: NSManagedObjectContext) -> TaskObject {
+  func mapTaskObject(taskId: String, _ task: Task, context: NSManagedObjectContext) -> TaskObject {
     let taskObject = TaskObject(context: context)
 
+    taskObject.taskId = taskId
     taskObject.name = task.name
     taskObject.duration = task.duration
     taskObject.startedAt = task.startedAt
@@ -74,18 +105,4 @@ class HistoryRepositoryDefault: HistoryRepository {
 
     return taskObject
   }
-}
-
-extension NSPersistentContainer {
-
-  public convenience init(name: String, bundle: Bundle) {
-    guard let modelURL = bundle.url(forResource: name, withExtension: "momd"),
-      let mom = NSManagedObjectModel(contentsOf: modelURL)
-    else {
-        fatalError("Unable to located Core Data model")
-    }
-
-    self.init(name: name, managedObjectModel: mom)
-  }
-
 }

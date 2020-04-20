@@ -2,13 +2,15 @@ import Cocoa
 
 public final class HistoryFactory {
 
-  public init() { }
-
-  public func makeRepository() -> HistoryRepository {
-    HistoryRepositoryDefault.create()
+  static public func makeRepository() -> HistoryRepository {
+    HistoryRepositoryDefault.create(completion: { error in
+      if let error = error {
+        print(error)
+      }
+    })
   }
 
-  public func makeViewController() -> NSWindowController? {
-    HistorySectionBuilder().build()
+  static public func makeViewController() -> NSWindowController? {
+    HistoryListSectionBuilder().build()
   }
 }

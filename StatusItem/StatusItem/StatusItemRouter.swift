@@ -41,7 +41,7 @@ class StatusItemRouterDefault: StatusItemRouter {
     historyWindowController?.close()
     NSApplication.shared.activate(ignoringOtherApps: true)
 
-    historyWindowController = HistoryFactory().makeViewController()
+    historyWindowController = HistoryFactory.makeViewController()
     historyWindowController?.window?.makeKeyAndOrderFront(self)
     historyWindowController?.window?.center()
   }

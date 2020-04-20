@@ -14,7 +14,7 @@ public class StatusItemSectionBuilder {
       router: StatusItemRouterDefault(statusItem: statusItem),
       timer: TickTimerDefault(),
       notifications: ServicesFactory.notifications(),
-      history: HistoryFactory().makeRepository()
+      history: HistoryFactory.makeRepository()
     )
   }
 }

@@ -16,14 +16,13 @@
 		D97672062448CC4700332691 /* TimerFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97672052448CC4700332691 /* TimerFormatterTests.swift */; };
 		D97672082448CC4700332691 /* Common.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D991B82A2440BD2800E6C84D /* Common.framework */; };
 		D97672112448CF7C00332691 /* Nimble in Frameworks */ = {isa = PBXBuildFile; productRef = D97672102448CF7C00332691 /* Nimble */; };
-		D97672132449C3DC00332691 /* TimeSelectorWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97672122449C3DC00332691 /* TimeSelectorWindowController.swift */; };
 		D97A7B932443651A00BA291E /* History.h in Headers */ = {isa = PBXBuildFile; fileRef = D97A7B912443651A00BA291E /* History.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D97A7B962443651A00BA291E /* History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97A7B8F2443651A00BA291E /* History.framework */; };
 		D97A7B972443651A00BA291E /* History.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D97A7B8F2443651A00BA291E /* History.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D97A7BA02443671400BA291E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D97A7B9F2443671400BA291E /* Localizable.strings */; };
-		D97A7BA42443674D00BA291E /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97A7BA32443674D00BA291E /* History.storyboard */; };
-		D97A7BA62443691400BA291E /* HistorySectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BA52443691400BA291E /* HistorySectionBuilder.swift */; };
-		D97A7BA824436B0600BA291E /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BA724436B0600BA291E /* HistoryViewController.swift */; };
+		D97A7BA42443674D00BA291E /* HistoryList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D97A7BA32443674D00BA291E /* HistoryList.storyboard */; };
+		D97A7BA62443691400BA291E /* HistoryListSectionBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BA52443691400BA291E /* HistoryListSectionBuilder.swift */; };
+		D97A7BA824436B0600BA291E /* HistoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BA724436B0600BA291E /* HistoryListViewController.swift */; };
 		D97A7BAB2443861A00BA291E /* HistoryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BAA2443861A00BA291E /* HistoryFactory.swift */; };
 		D97A7BAD2443869D00BA291E /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BAC2443869D00BA291E /* HistoryRepository.swift */; };
 		D97A7BB124438C2B00BA291E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BB024438C2B00BA291E /* Task.swift */; };
@@ -54,6 +53,8 @@
 		D991B8732440C19900E6C84D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91176E8243A3CA400980AB6 /* Constants.swift */; };
 		D991B8952440C56C00E6C84D /* TimeSelector.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9DD4542243B112300B49DD6 /* TimeSelector.storyboard */; };
 		D99336832440DC0800DE736A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D99336822440DC0800DE736A /* Localizable.strings */; };
+		D9A57E08244D99A0001BB509 /* HistoryListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A57E07244D99A0001BB509 /* HistoryListPresenter.swift */; };
+		D9A57E0B244DD405001BB509 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A57E0A244DD405001BB509 /* WindowController.swift */; };
 		D9D1CB982440D038002DD21A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9D1CB972440D038002DD21A /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -165,14 +166,13 @@
 		D97672032448CC4700332691 /* CommonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CommonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97672052448CC4700332691 /* TimerFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerFormatterTests.swift; sourceTree = "<group>"; };
 		D97672072448CC4700332691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D97672122449C3DC00332691 /* TimeSelectorWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorWindowController.swift; sourceTree = "<group>"; };
 		D97A7B8F2443651A00BA291E /* History.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = History.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97A7B912443651A00BA291E /* History.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
 		D97A7B922443651A00BA291E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D97A7B9F2443671400BA291E /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
-		D97A7BA32443674D00BA291E /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
-		D97A7BA52443691400BA291E /* HistorySectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySectionBuilder.swift; sourceTree = "<group>"; };
-		D97A7BA724436B0600BA291E /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		D97A7BA32443674D00BA291E /* HistoryList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoryList.storyboard; sourceTree = "<group>"; };
+		D97A7BA52443691400BA291E /* HistoryListSectionBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListSectionBuilder.swift; sourceTree = "<group>"; };
+		D97A7BA724436B0600BA291E /* HistoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListViewController.swift; sourceTree = "<group>"; };
 		D97A7BAA2443861A00BA291E /* HistoryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryFactory.swift; sourceTree = "<group>"; };
 		D97A7BAC2443869D00BA291E /* HistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRepository.swift; sourceTree = "<group>"; };
 		D97A7BB024438C2B00BA291E /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -189,6 +189,8 @@
 		D991B8582440C09D00E6C84D /* StatusItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StatusItem.h; sourceTree = "<group>"; };
 		D991B8592440C09D00E6C84D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D99336822440DC0800DE736A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		D9A57E07244D99A0001BB509 /* HistoryListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListPresenter.swift; sourceTree = "<group>"; };
+		D9A57E0A244DD405001BB509 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		D9C2EA7E24405D8800606452 /* SeparatorMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorMenuItem.swift; sourceTree = "<group>"; };
 		D9D1CB972440D038002DD21A /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D9DD4542243B112300B49DD6 /* TimeSelector.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TimeSelector.storyboard; sourceTree = "<group>"; };
@@ -380,10 +382,8 @@
 			isa = PBXGroup;
 			children = (
 				D97A7BAA2443861A00BA291E /* HistoryFactory.swift */,
+				D9A57E06244D9834001BB509 /* List */,
 				D97A7BA92443860C00BA291E /* Repository */,
-				D97A7BA52443691400BA291E /* HistorySectionBuilder.swift */,
-				D97A7BA724436B0600BA291E /* HistoryViewController.swift */,
-				D97A7BA32443674D00BA291E /* History.storyboard */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -421,6 +421,7 @@
 			isa = PBXGroup;
 			children = (
 				D91176E8243A3CA400980AB6 /* Constants.swift */,
+				D9A57E09244DD3ED001BB509 /* UI */,
 				D93A56CD244B0E7000FDC41B /* Services */,
 				D991B8502440C07100E6C84D /* Timers */,
 				D991B84F2440C06300E6C84D /* Formatters */,
@@ -472,7 +473,6 @@
 			children = (
 				D9DD4544243B644600B49DD6 /* TimeSelectorSectionBuilder.swift */,
 				D9DD4546243B71EA00B49DD6 /* TimeSelectorViewController.swift */,
-				D97672122449C3DC00332691 /* TimeSelectorWindowController.swift */,
 				D9DD4542243B112300B49DD6 /* TimeSelector.storyboard */,
 			);
 			path = TimeSelector;
@@ -484,6 +484,25 @@
 				D99336822440DC0800DE736A /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D9A57E06244D9834001BB509 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				D97A7BA52443691400BA291E /* HistoryListSectionBuilder.swift */,
+				D9A57E07244D99A0001BB509 /* HistoryListPresenter.swift */,
+				D97A7BA724436B0600BA291E /* HistoryListViewController.swift */,
+				D97A7BA32443674D00BA291E /* HistoryList.storyboard */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		D9A57E09244DD3ED001BB509 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				D9A57E0A244DD405001BB509 /* WindowController.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		D9D1CB962440D030002DD21A /* Resources */ = {
@@ -731,7 +750,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D97A7BA02443671400BA291E /* Localizable.strings in Resources */,
-				D97A7BA42443674D00BA291E /* History.storyboard in Resources */,
+				D97A7BA42443674D00BA291E /* HistoryList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,9 +824,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D97A7BAD2443869D00BA291E /* HistoryRepository.swift in Sources */,
-				D97A7BA62443691400BA291E /* HistorySectionBuilder.swift in Sources */,
+				D97A7BA62443691400BA291E /* HistoryListSectionBuilder.swift in Sources */,
+				D9A57E08244D99A0001BB509 /* HistoryListPresenter.swift in Sources */,
 				D97A7BB124438C2B00BA291E /* Task.swift in Sources */,
-				D97A7BA824436B0600BA291E /* HistoryViewController.swift in Sources */,
+				D97A7BA824436B0600BA291E /* HistoryListViewController.swift in Sources */,
 				D97A7BB4244397FC00BA291E /* History.xcdatamodeld in Sources */,
 				D97A7BAB2443861A00BA291E /* HistoryFactory.swift in Sources */,
 			);
@@ -817,7 +837,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D97672132449C3DC00332691 /* TimeSelectorWindowController.swift in Sources */,
 				D991B8242440BD1300E6C84D /* TimeSelectorSectionBuilder.swift in Sources */,
 				D991B8232440BD1300E6C84D /* TimeSelectorViewController.swift in Sources */,
 			);
@@ -832,6 +851,7 @@
 				D991B8702440C11C00E6C84D /* TickTimer.swift in Sources */,
 				D991B8712440C12000E6C84D /* TimerFormatter.swift in Sources */,
 				D991B8362440BD3100E6C84D /* Localization.swift in Sources */,
+				D9A57E0B244DD405001BB509 /* WindowController.swift in Sources */,
 				D93A56CF244B0E7E00FDC41B /* ServicesFactory.swift in Sources */,
 				D991B8722440C18300E6C84D /* Sounds.swift in Sources */,
 			);

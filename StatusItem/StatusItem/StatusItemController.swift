@@ -58,7 +58,7 @@ private extension StatusItemControllerDefault {
     router.activatePreviousApp()
     router.closeOpenWindows()
 
-    currentTask = Task(name: name, duration: endTimeInterval, startedAt: Date(), completed: false)
+    currentTask = Task(taskId: "", name: name, duration: endTimeInterval, startedAt: Date(), completed: false)
 
     view.menu = MenuBuilder()
       .addCurrentTimerItem(with: name)
@@ -91,7 +91,7 @@ private extension StatusItemControllerDefault {
   }
 
   func completeTask(_ task: Task) {
-    history.save(task: task)
+    try? history.save(task: task)
 
     let message = loc("task.default.name", self) + " \"\(task.name)\" " + loc("statusbar.task.completed", self)
     notifications.show(message: message)
@@ -122,7 +122,7 @@ extension StatusItemControllerDefault: MenuDelegate {
 
   func menuDidCancelTimer() {
     if let task = currentTask {
-      history.save(task: task)
+      try? history.save(task: task)
     }
     stopTimer()
   }
