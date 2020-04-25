@@ -1,2 +1,9 @@
 large_tuple:
     warning: 3
+
+opt_in_rules:
+  - empty_count
+  - empty_string
+  - trailing_newline
+  - colon
+  - comma

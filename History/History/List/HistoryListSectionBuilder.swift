@@ -9,19 +9,19 @@ class HistoryListSectionBuilder {
       return nil
     }
 
-    windowController.window?.minSize = NSSize(width: 500, height: 400)
+    if let viewController = windowController.contentViewController as? HistoryListViewController {
+      windowController.window?.minSize = viewController.view.frame.size
 
-    if let view = windowController.contentViewController as? HistoryListViewController {
       let repository = HistoryFactory.makeRepository()
-      let router = HistoryListRouterDefault(viewController: view)
+      let router = HistoryListRouterDefault(viewController: viewController)
       let exportInteractor = HistoryExportInteractorDefault(repository: repository)
       let presenter = HistoryListPresenterDefault(
-        view: view,
+        view: viewController,
         router: router,
         exportInteractor: exportInteractor,
         repository: repository
       )
-      view.presenter = presenter
+      viewController.presenter = presenter
     }
 
     return windowController

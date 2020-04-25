@@ -9,7 +9,6 @@ class WindowController: NSWindowController {
   }
 
   func setupWindow() {
-
     window?.styleMask.insert(.unifiedTitleAndToolbar)
     window?.styleMask.insert(.fullSizeContentView)
     window?.styleMask.insert(.titled)
