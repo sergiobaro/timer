@@ -2,3 +2,4 @@
 "history.title" = "History";
 "history.tasks.empty" = "No tasks recorded yet!!";
 "history.clear.button" = "Clear";
+"history.export.button" = "Export...";

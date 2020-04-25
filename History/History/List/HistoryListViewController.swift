@@ -9,6 +9,7 @@ protocol HistoryListView: class {
 class HistoryListViewController: NSViewController {
 
   @IBOutlet private var tableView: NSTableView!
+  @IBOutlet private var exportButton: NSButton!
   @IBOutlet private var clearButton: NSButton!
 
   var presenter: HistoryListPresenter!
@@ -23,6 +24,10 @@ class HistoryListViewController: NSViewController {
     tableView.dataSource = self
     tableView.delegate = self
 
+    exportButton.title = loc("history.export.button", self)
+    exportButton.action = #selector(tapExportButton)
+    exportButton.target = self
+
     clearButton.title = loc("history.clear.button", self)
     clearButton.action = #selector(tapClearButton)
     clearButton.target = self
@@ -35,6 +40,10 @@ private extension HistoryListViewController {
 
   @objc func tapClearButton() {
     presenter.userTapClear()
+  }
+
+  @objc func tapExportButton() {
+    presenter.userTapExport()
   }
 }
 

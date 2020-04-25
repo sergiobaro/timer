@@ -13,7 +13,14 @@ class HistoryListSectionBuilder {
 
     if let view = windowController.contentViewController as? HistoryListViewController {
       let repository = HistoryFactory.makeRepository()
-      let presenter = HistoryListPresenterDefault(view: view, repository: repository)
+      let router = HistoryListRouterDefault(viewController: view)
+      let exportInteractor = HistoryExportInteractorDefault(repository: repository)
+      let presenter = HistoryListPresenterDefault(
+        view: view,
+        router: router,
+        exportInteractor: exportInteractor,
+        repository: repository
+      )
       view.presenter = presenter
     }
 

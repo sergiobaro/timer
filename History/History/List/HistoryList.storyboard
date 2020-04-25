@@ -127,11 +127,21 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Aj5-Dt-sQz">
+                                <rect key="frame" x="12" y="8" width="81" height="32"/>
+                                <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="G8U-1f-PUj">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="Aj5-Dt-sQz" firstAttribute="top" secondItem="Rg4-i9-nCu" secondAttribute="bottom" constant="10" id="4XM-8Y-MtS"/>
+                            <constraint firstAttribute="bottom" secondItem="Aj5-Dt-sQz" secondAttribute="bottom" constant="15" id="IPQ-5V-fPL"/>
                             <constraint firstItem="Rg4-i9-nCu" firstAttribute="leading" secondItem="QEu-Wq-2bM" secondAttribute="leading" id="Lfq-4X-ST7"/>
                             <constraint firstAttribute="trailing" secondItem="Rg4-i9-nCu" secondAttribute="trailing" id="TEW-LM-9Xb"/>
                             <constraint firstItem="dzl-Fm-KZN" firstAttribute="top" secondItem="Rg4-i9-nCu" secondAttribute="bottom" constant="10" id="X3c-mB-2N1"/>
+                            <constraint firstItem="Aj5-Dt-sQz" firstAttribute="leading" secondItem="QEu-Wq-2bM" secondAttribute="leading" constant="18" id="dlZ-9i-49e"/>
                             <constraint firstItem="Rg4-i9-nCu" firstAttribute="top" secondItem="QEu-Wq-2bM" secondAttribute="top" constant="22" id="nPJ-yR-gWf"/>
                             <constraint firstAttribute="bottom" secondItem="dzl-Fm-KZN" secondAttribute="bottom" constant="15" id="quA-yF-VXU"/>
                             <constraint firstAttribute="trailing" secondItem="dzl-Fm-KZN" secondAttribute="trailing" constant="18" id="tjd-mk-VWq"/>
@@ -139,6 +149,7 @@
                     </view>
                     <connections>
                         <outlet property="clearButton" destination="dzl-Fm-KZN" id="UCR-iy-JjP"/>
+                        <outlet property="exportButton" destination="Aj5-Dt-sQz" id="jkN-NR-hNw"/>
                         <outlet property="tableView" destination="NJE-5p-TCB" id="Cxh-WZ-HyY"/>
                     </connections>
                 </viewController>

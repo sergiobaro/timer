@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Task {
+public struct Task: Codable {
   public let taskId: String
   public let name: String
   public let duration: TimeInterval

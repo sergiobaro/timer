@@ -5,6 +5,7 @@ protocol HistoryListPresenter {
   func viewIsReady()
 
   func userTapClear()
+  func userTapExport()
 }
 
 struct HistoryListTask {
@@ -16,12 +17,21 @@ struct HistoryListTask {
 class HistoryListPresenterDefault {
 
   private weak var view: HistoryListView?
+  private let router: HistoryListRouter
+  private let exportInteractor: HistoryExportInteractor
   private let repository: HistoryRepository
 
   private let formatter = TimerFormatter()
 
-  init(view: HistoryListView, repository: HistoryRepository) {
+  init(
+    view: HistoryListView,
+    router: HistoryListRouter,
+    exportInteractor: HistoryExportInteractor,
+    repository: HistoryRepository
+  ) {
     self.view = view
+    self.router = router
+    self.exportInteractor = exportInteractor
     self.repository = repository
   }
 }
@@ -42,5 +52,17 @@ extension HistoryListPresenterDefault: HistoryListPresenter {
   func userTapClear() {
     repository.removeAll()
     view?.showTasks([])
+  }
+
+  func userTapExport() {
+    router.showSaveFile { [weak self] url in
+      guard let self = self else { return }
+
+      do {
+        try self.exportInteractor.export(to: url, format: .json)
+      } catch {
+        print(error)
+      }
+    }
   }
 }
