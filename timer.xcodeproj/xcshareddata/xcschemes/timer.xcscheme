@@ -39,6 +39,16 @@
                ReferencedContainer = "container:timer.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D991A63C2457565400818B24"
+               BuildableName = "AboutTests.xctest"
+               BlueprintName = "AboutTests"
+               ReferencedContainer = "container:timer.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

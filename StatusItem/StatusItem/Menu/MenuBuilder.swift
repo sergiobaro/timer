@@ -65,6 +65,15 @@ class MenuBuilder {
     return self
   }
 
+  func addAboutItem() -> Self {
+    let aboutItem = ActionMenuItem(title: loc("statusbar.about", self)) { [weak menu] in
+      menu?.delegate?.menuDidSelectAbout()
+    }
+    items.append(aboutItem)
+
+    return self
+  }
+
   func addQuitAppItem() -> Self {
     let quitItem = ActionMenuItem(title: loc("statusbar.quit", self)) { [weak menu] in
       menu?.delegate?.menuDidQuitApp()

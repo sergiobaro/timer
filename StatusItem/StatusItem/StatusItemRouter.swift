@@ -1,6 +1,7 @@
 import Cocoa
 import TimeSelector
 import History
+import About
 
 protocol StatusItemRouter {
 
@@ -9,6 +10,9 @@ protocol StatusItemRouter {
 
   func showHistory()
   func closeHistory()
+
+  func showAbout()
+  func closeAbout()
 
   func closeOpenWindows()
   func activatePreviousApp()
@@ -19,6 +23,7 @@ class StatusItemRouterDefault: StatusItemRouter {
 
   private var timeSelectorWindowController: NSWindowController?
   private var historyWindowController: NSWindowController?
+  private var aboutWindowController: NSWindowController?
 
   private weak var statusItem: NSStatusItem?
 
@@ -27,7 +32,7 @@ class StatusItemRouterDefault: StatusItemRouter {
   }
 
   func showTimeSelector(delegate: TimeSelectorDelegate) {
-    timeSelectorWindowController?.close()
+    closeTimeSelector()
     NSApplication.shared.activate(ignoringOtherApps: true)
 
     let windowController = TimeSeletorSectionBuilder().build(delegate: delegate)
@@ -37,8 +42,13 @@ class StatusItemRouterDefault: StatusItemRouter {
     timeSelectorWindowController = windowController
   }
 
+  func closeTimeSelector() {
+    timeSelectorWindowController?.close()
+    timeSelectorWindowController = nil
+  }
+
   func showHistory() {
-    historyWindowController?.close()
+    closeHistory()
     NSApplication.shared.activate(ignoringOtherApps: true)
 
     historyWindowController = HistoryFactory.makeViewController()
@@ -51,14 +61,24 @@ class StatusItemRouterDefault: StatusItemRouter {
     historyWindowController = nil
   }
 
-  func closeTimeSelector() {
-    timeSelectorWindowController?.close()
-    timeSelectorWindowController = nil
+  func showAbout() {
+    closeAbout()
+    NSApplication.shared.activate(ignoringOtherApps: true)
+
+    aboutWindowController = AboutSectionBuilder().build()
+    aboutWindowController?.window?.makeKeyAndOrderFront(self)
+    aboutWindowController?.window?.center()
+  }
+
+  func closeAbout() {
+    aboutWindowController?.close()
+    aboutWindowController = nil
   }
 
   func closeOpenWindows() {
     closeTimeSelector()
     closeHistory()
+    closeAbout()
   }
 
   func activatePreviousApp() {

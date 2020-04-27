@@ -1,8 +1,18 @@
 import AppKit
 
-class WindowController: NSWindowController {
+public class WindowController: NSWindowController {
 
-  override func windowDidLoad() {
+  public override init(window: NSWindow?) {
+    super.init(window: window)
+
+    setupWindow()
+  }
+
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+  }
+
+  public override func windowDidLoad() {
     super.windowDidLoad()
 
     setupWindow()
@@ -21,7 +31,7 @@ class WindowController: NSWindowController {
     window?.styleMask.remove(.miniaturizable)
   }
 
-  override func cancelOperation(_ sender: Any?) {
+  public override func cancelOperation(_ sender: Any?) {
     close()
   }
 }

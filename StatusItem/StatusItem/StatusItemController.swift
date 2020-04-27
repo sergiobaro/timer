@@ -50,6 +50,7 @@ private extension StatusItemControllerDefault {
       .addQuickStartItems()
       .addSeparator()
       .addHistoryItem()
+      .addAboutItem()
       .addQuitAppItem()
       .build(delegate: self)
   }
@@ -129,6 +130,10 @@ extension StatusItemControllerDefault: MenuDelegate {
 
   func menuDidSelectHistory() {
     router.showHistory()
+  }
+
+  func menuDidSelectAbout() {
+    router.showAbout()
   }
 
   func menuDidSelectTime() {

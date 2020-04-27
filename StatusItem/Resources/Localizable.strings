@@ -4,6 +4,7 @@
 "statusbar.start.custom" = "Start...";
 "statusbar.cancel" = "Cancel";
 "statusbar.history" = "History";
+"statusbar.about" = "About";
 "statusbar.quit" = "Quit";
 "statusbar.task.completed" = "completed.";
 

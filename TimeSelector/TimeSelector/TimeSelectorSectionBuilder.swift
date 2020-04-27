@@ -17,8 +17,6 @@ public class TimeSeletorSectionBuilder {
     }
 
     (windowController.contentViewController as? TimeSelectorViewController)?.delegate = delegate
-    windowController.window?.styleMask.remove(.fullScreen)
-    windowController.window?.styleMask.remove(.miniaturizable)
     windowController.window?.styleMask.remove(.resizable)
 
     return windowController

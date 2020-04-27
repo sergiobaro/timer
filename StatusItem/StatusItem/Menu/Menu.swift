@@ -5,6 +5,7 @@ protocol MenuDelegate: class {
   func menuDidQuickStart(_ timeInterval: TimeInterval)
   func menuDidCancelTimer()
   func menuDidSelectTime()
+  func menuDidSelectAbout()
   func menuDidSelectHistory()
   func menuDidQuitApp()
 }
