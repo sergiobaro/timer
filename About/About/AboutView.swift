@@ -1,11 +1,15 @@
 import SwiftUI
 
 struct AboutView: View {
+
+  let title: String
+  let version: String
+
   var body: some View {
     VStack {
-      Text("Timer")
+      Text(title)
         .font(.title)
-      Text("Version 0.1")
+      Text(version)
         .font(.footnote)
         .padding(5)
         .padding(.bottom, 10)
@@ -16,6 +20,6 @@ struct AboutView: View {
 
 struct AboutView_Previews: PreviewProvider {
   static var previews: some View {
-    AboutView()
+    AboutView(title: "Timer", version: "0.1")
   }
 }

@@ -66,6 +66,8 @@
 		D9D1CB982440D038002DD21A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9D1CB972440D038002DD21A /* Localizable.strings */; };
 		D9EAB968245423230084996A /* HistoryListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EAB967245423230084996A /* HistoryListRouter.swift */; };
 		D9EAB96E245425FB0084996A /* HistoryExportInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EAB96D245425FB0084996A /* HistoryExportInteractor.swift */; };
+		D9ECDF212458ACAA00C75FB5 /* Bundle+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9ECDF202458ACAA00C75FB5 /* Bundle+Version.swift */; };
+		D9ECDF242458AD6A00C75FB5 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9ECDF232458AD6A00C75FB5 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +248,8 @@
 		D9DD4546243B71EA00B49DD6 /* TimeSelectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectorViewController.swift; sourceTree = "<group>"; };
 		D9EAB967245423230084996A /* HistoryListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryListRouter.swift; sourceTree = "<group>"; };
 		D9EAB96D245425FB0084996A /* HistoryExportInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryExportInteractor.swift; sourceTree = "<group>"; };
+		D9ECDF202458ACAA00C75FB5 /* Bundle+Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Version.swift"; sourceTree = "<group>"; };
+		D9ECDF232458AD6A00C75FB5 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D9F0B3572439E3E100E1D3CB /* Sounds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sounds.swift; sourceTree = "<group>"; };
 		D9F0B3592439E4F500E1D3CB /* StatusItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		D9F0B35B2439E7A900E1D3CB /* TickTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickTimer.swift; sourceTree = "<group>"; };
@@ -481,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				D991A6522457569900818B24 /* About */,
+				D9ECDF222458AD5900C75FB5 /* Resources */,
 				D991A6372457565400818B24 /* About.h */,
 				D991A6382457565400818B24 /* Info.plist */,
 			);
@@ -520,6 +525,7 @@
 			isa = PBXGroup;
 			children = (
 				D91176E8243A3CA400980AB6 /* Constants.swift */,
+				D9ECDF1F2458AC9F00C75FB5 /* Extensions */,
 				D9A57E09244DD3ED001BB509 /* UI */,
 				D93A56CD244B0E7000FDC41B /* Services */,
 				D991B8502440C07100E6C84D /* Timers */,
@@ -620,6 +626,22 @@
 				D9EAB96D245425FB0084996A /* HistoryExportInteractor.swift */,
 			);
 			path = Interactors;
+			sourceTree = "<group>";
+		};
+		D9ECDF1F2458AC9F00C75FB5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D9ECDF202458ACAA00C75FB5 /* Bundle+Version.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D9ECDF222458AD5900C75FB5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D9ECDF232458AD6A00C75FB5 /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -924,6 +946,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9ECDF242458AD6A00C75FB5 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,6 +1073,7 @@
 				D991B8732440C19900E6C84D /* Constants.swift in Sources */,
 				D991B8702440C11C00E6C84D /* TickTimer.swift in Sources */,
 				D991B8712440C12000E6C84D /* TimerFormatter.swift in Sources */,
+				D9ECDF212458ACAA00C75FB5 /* Bundle+Version.swift in Sources */,
 				D991B8362440BD3100E6C84D /* Localization.swift in Sources */,
 				D9A57E0B244DD405001BB509 /* WindowController.swift in Sources */,
 				D93A56CF244B0E7E00FDC41B /* ServicesFactory.swift in Sources */,
@@ -1277,6 +1301,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sbs.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1298,6 +1323,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sbs.timer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1419,6 +1445,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sbs.About;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -1449,6 +1476,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sbs.About;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
