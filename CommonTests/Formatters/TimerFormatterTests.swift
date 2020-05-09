@@ -1,6 +1,6 @@
 import XCTest
-@testable import Common
 import Nimble
+@testable import Common
 
 class TimerFormatterTests: XCTestCase {
 
