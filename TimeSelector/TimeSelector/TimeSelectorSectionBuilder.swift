@@ -1,6 +1,6 @@
 import Cocoa
 
-public protocol TimeSelectorDelegate: class {
+public protocol TimeSelectorDelegate: AnyObject {
 
   func timeSelectorDidSelect(name: String, timeInterval: TimeInterval)
 }

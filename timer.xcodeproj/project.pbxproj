@@ -31,6 +31,9 @@
 		D97A7BAD2443869D00BA291E /* HistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BAC2443869D00BA291E /* HistoryRepository.swift */; };
 		D97A7BB124438C2B00BA291E /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BB024438C2B00BA291E /* Task.swift */; };
 		D97A7BB4244397FC00BA291E /* History.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D97A7BB2244397FC00BA291E /* History.xcdatamodeld */; };
+		D982F02926C10B3500509751 /* About.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D991A6352457565400818B24 /* About.framework */; };
+		D982F02E26C10B4400509751 /* TimeSelector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D991B8162440BD0900E6C84D /* TimeSelector.framework */; };
+		D982F03226C10B4700509751 /* History.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97A7B8F2443651A00BA291E /* History.framework */; };
 		D991A6472457565400818B24 /* About.h in Headers */ = {isa = PBXBuildFile; fileRef = D991A6372457565400818B24 /* About.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D991A64A2457565400818B24 /* About.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D991A6352457565400818B24 /* About.framework */; };
 		D991A64B2457565400818B24 /* About.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D991A6352457565400818B24 /* About.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -101,6 +104,27 @@
 			remoteInfo = Common;
 		};
 		D97A7BB52443999400BA291E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9635A3E2439A45E00D221E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D97A7B8E2443651A00BA291E;
+			remoteInfo = History;
+		};
+		D982F02B26C10B3500509751 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9635A3E2439A45E00D221E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D991A6342457565400818B24;
+			remoteInfo = About;
+		};
+		D982F03026C10B4400509751 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9635A3E2439A45E00D221E3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D991B8152440BD0900E6C84D;
+			remoteInfo = TimeSelector;
+		};
+		D982F03426C10B4700509751 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D9635A3E2439A45E00D221E3 /* Project object */;
 			proxyType = 1;
@@ -314,6 +338,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D982F03226C10B4700509751 /* History.framework in Frameworks */,
+				D982F02E26C10B4400509751 /* TimeSelector.framework in Frameworks */,
+				D982F02926C10B3500509751 /* About.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -710,7 +737,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9635A562439A46000D221E3 /* Build configuration list for PBXNativeTarget "timer" */;
 			buildPhases = (
-				D943957F24406AFA00D1A39B /* Swiftlint */,
+				D943957F24406AFA00D1A39B /* SwiftLint */,
 				D9635A422439A45E00D221E3 /* Sources */,
 				D9635A432439A45E00D221E3 /* Frameworks */,
 				D9635A442439A45E00D221E3 /* Resources */,
@@ -841,6 +868,9 @@
 				D97A7BB62443999400BA291E /* PBXTargetDependency */,
 				D991B8652440C0E800E6C84D /* PBXTargetDependency */,
 				D991B8632440C0E200E6C84D /* PBXTargetDependency */,
+				D982F02C26C10B3500509751 /* PBXTargetDependency */,
+				D982F03126C10B4400509751 /* PBXTargetDependency */,
+				D982F03526C10B4700509751 /* PBXTargetDependency */,
 			);
 			name = StatusItem;
 			productName = StatusItem;
@@ -854,7 +884,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1140;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "Sergio Baro";
 				TargetAttributes = {
 					D95A82422466B2F10086FF6E = {
@@ -982,7 +1012,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D943957F24406AFA00D1A39B /* Swiftlint */ = {
+		D943957F24406AFA00D1A39B /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -991,14 +1021,14 @@
 			);
 			inputPaths = (
 			);
-			name = Swiftlint;
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+			shellScript = "PATH=/opt/homebrew/bin/:$PATH\nswiftlint --quiet\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1122,6 +1152,21 @@
 			target = D97A7B8E2443651A00BA291E /* History */;
 			targetProxy = D97A7BB52443999400BA291E /* PBXContainerItemProxy */;
 		};
+		D982F02C26C10B3500509751 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D991A6342457565400818B24 /* About */;
+			targetProxy = D982F02B26C10B3500509751 /* PBXContainerItemProxy */;
+		};
+		D982F03126C10B4400509751 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D991B8152440BD0900E6C84D /* TimeSelector */;
+			targetProxy = D982F03026C10B4400509751 /* PBXContainerItemProxy */;
+		};
+		D982F03526C10B4700509751 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D97A7B8E2443651A00BA291E /* History */;
+			targetProxy = D982F03426C10B4700509751 /* PBXContainerItemProxy */;
+		};
 		D991A6492457565400818B24 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = D991A6342457565400818B24 /* About */;
@@ -1230,6 +1275,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1290,6 +1336,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1401,7 +1448,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1431,7 +1478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1460,7 +1507,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1491,7 +1538,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1520,7 +1567,7 @@
 		D991B8212440BD0900E6C84D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1548,7 +1595,7 @@
 		D991B8222440BD0900E6C84D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1576,7 +1623,7 @@
 		D991B8342440BD2800E6C84D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1604,7 +1651,7 @@
 		D991B8352440BD2800E6C84D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1632,7 +1679,7 @@
 		D991B8602440C09D00E6C84D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1660,7 +1707,7 @@
 		D991B8612440C09D00E6C84D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

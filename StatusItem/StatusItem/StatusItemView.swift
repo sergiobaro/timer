@@ -1,6 +1,6 @@
 import Cocoa
 
-protocol StatusItemView: class {
+protocol StatusItemView: AnyObject {
 
   var title: String? { get set }
   var menu: Menu? { get set }

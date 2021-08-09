@@ -1,7 +1,7 @@
 import Cocoa
 import Common
 
-protocol HistoryListView: class {
+protocol HistoryListView: AnyObject {
 
   func showTasks(_ tasks: [HistoryListTask])
 }

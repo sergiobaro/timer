@@ -1,6 +1,6 @@
 import AppKit
 
-protocol MenuDelegate: class {
+protocol MenuDelegate: AnyObject {
 
   func menuDidQuickStart(_ timeInterval: TimeInterval)
   func menuDidCancelTimer()
